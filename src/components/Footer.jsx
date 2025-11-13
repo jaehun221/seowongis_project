@@ -4,11 +4,6 @@ export default function Footer() {
       {/* footer 전체를 감싸는 full-width 영역 */}
       <div className="footer-inner">
 
-        {/* 로고 */}
-        <div className="footer-logo">
-          <img src="/assets/images/main/footer_logo.png" alt="footer logo" />
-        </div>
-
         {/* 정책 링크 */}
         <ul className="footer-policy">
           <li><a href="/policy/privacy">개인정보취급방침</a></li>
@@ -17,13 +12,13 @@ export default function Footer() {
 
         {/* 정보 */}
         <div className="footer-text">
-          <p>㈜지오스토리 | 대표: 김승용</p>
-          <p>사업자등록번호: 109-86-36323</p>
-          <p>주소: 서울특별시 강서구 화곡로68길 82, 406-408호</p>
+          <p>㈜서원공간정보 | 대표: 문중원</p>
+          <p>사업자등록번호: 435-81-01752</p>
+          <p>주소: 충청남도 서산시 성연면 성연3로 161, 302호(서산솔라벤처단지)</p>
           <p>
-            Tel: <a href="tel:18007453">1800-7453</a> | Fax: 070-5228-4731
+            Tel: <a href="tel:0416621106">041-662-1106</a> | Fax: 041-663-1109
           </p>
-          <p>COPYRIGHT © 2021 GEOSTORY. All Rights Reserved</p>
+          <p>COPYRIGHT &copy;2019 (주)서원공간정보. All Rights Reserved</p>
         </div>
 
       </div>
