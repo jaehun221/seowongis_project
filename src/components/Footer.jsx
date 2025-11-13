@@ -9,6 +9,7 @@ export default function Footer() {
           <li><a href="/policy/privacy">개인정보취급방침</a></li>
           <li><a href="/policy/term">이용약관</a></li>
         </ul>
+        <hr></hr>
 
         {/* 정보 */}
         <div className="footer-text">
