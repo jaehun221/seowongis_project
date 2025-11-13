@@ -68,11 +68,16 @@ a {
 
 .nav {
   margin-left: auto;
+  padding-right: 10%;
+}
+
+.nav-list {
+  list-style: none;
 }
 
 .nav-list--depth1 {
   display: flex;
-  gap: 40px;
+  gap: 100px;
 }
 
 .nav-list--depth1 > .nav-list__item > a {
@@ -102,6 +107,7 @@ a {
 
 .nav-list__item {
   position: relative;
+  list-style: none;
 }
 
 /* depth2 */
@@ -152,6 +158,75 @@ a {
 }
 
 /* ================================================
+   MEGA MENU (전체 드롭다운)
+   - 기존 네비 설정값은 건드리지 않음
+   - Header hover 시 전체 메뉴가 슬라이드다운됨
+================================================ */
+
+/* 기존 depth2 메뉴는 숨김 처리 (mega-menu를 사용하므로) */
+.nav-list--depth2,
+.nav-list--depth3 {
+  display: none !important;
+}
+
+/* mega-menu 기본 구조 */
+.mega-menu {
+  width: 100%;
+  background: #fff;
+  position: absolute;
+  top: 90px;
+  left: 0;
+  overflow: hidden;
+
+  /* 슬라이드다운 기본 상태 */
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+
+  /* 애니메이션 */
+  transition: max-height 0.35s ease, opacity 0.35s ease;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  z-index: 50;
+}
+
+/* 보여줄 때 */
+.mega-menu.show {
+  max-height: 500px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 내부 레이아웃 */
+.mega-menu-inner {
+  display: flex;
+  justify-content: space-between;
+  padding: 32px 0;
+}
+
+.mega-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mega-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #222;
+}
+
+.mega-col a {
+  font-size: 15px;
+  color: #444;
+  transition: 0.2s;
+}
+
+.mega-col a:hover {
+  color: #0090ff;
+}
+
+/* ================================================
    FOOTER
 ================================================ */
 
@@ -194,3 +269,5 @@ a {
 .footer-text a {
   color: #555;
 }
+
+
