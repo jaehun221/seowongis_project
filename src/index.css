@@ -303,3 +303,16 @@ ul, li {
 }
 
 
+.location-page {
+  max-width: 1200px;
+  padding: 40px 20px;
+  margin: 0 auto;
+}
+
+.location-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #222;
+  border-left: 5px solid #0090ff;
+  padding-left: 12px;
+}

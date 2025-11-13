@@ -32,7 +32,7 @@ export default function Header() {
 
           <div className="mega-col">
             <p className="mega-title">About</p>
-            <a href="/about/intro">지오스토리</a>
+            <a href="/about/intro">서원공간정보</a>
             <a href="/about/ci">CI</a>
             <a href="/about/history">연혁</a>
             <a href="/about/business_performance">주요 사업실적</a>
