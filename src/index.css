@@ -1,6 +1,13 @@
 /* ================================================
    Global Style (전체 공통 스타일)
 ================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
 body {
   margin: 0;
   padding: 0;
@@ -19,11 +26,12 @@ ul, li {
 }
 
 .container {
-  width: 1440px;
-  max-width: 100%;
+  max-width: 1440px;  /* ← FIX */
+  width: 100%;        /* ← FIX */
   padding: 0 24px;
   margin: 0 auto;
 }
+
 
 /* ================================================
    HEADER (지오스토리 PC 레이아웃 기반)
@@ -73,8 +81,9 @@ ul, li {
 
 .nav {
   margin-left: auto;
-  padding-right: 10%;
+  padding-right: 0 !important;
 }
+
 
 .nav-list {
   list-style: none;
@@ -278,3 +287,116 @@ ul, li {
 }
 
 
+.location-page {
+  max-width: 1200px;
+  padding: 40px 20px;
+  margin: 0 auto;
+}
+
+.location-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #222;
+  border-left: 5px solid #1c4da1;
+  padding-left: 12px;
+}
+
+
+/* NEWS PAGE */
+.news-page {
+  padding: 40px 0 80px;
+}
+
+.news-page h1 {
+  margin-bottom: 32px;
+  font-size: 32px;
+  font-weight: 800;
+  color: #222;
+  border-left: 6px solid #0054a6; /* 포인트 컬러 */
+  padding-left: 16px;   /* ← 추가! */
+  margin-left: 4px;     /* ← 살짝 띄울 경우 선택 */
+}
+
+/* LIST */
+.news-list {
+  padding: 0;
+  margin: 0;
+}
+
+.news-item {
+  border-bottom: 1px solid #e5e5e5;
+  transition: background 0.25s ease;
+}
+
+.news-item:hover {
+  background: #f7faff; /* 살짝 파란 톤 */
+}
+
+.news-item a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;  
+  width: 100%;
+  box-sizing: border-box;
+  padding: 18px 4px;
+  font-size: 18px;
+  color: #222;
+  gap: 20px;
+}
+
+.news-title {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.news-date {
+  width: 120px;
+  text-align: right;
+  color: #777;
+  font-size: 15px;
+}
+
+
+.news-detail {
+  max-width: 900px;
+  padding: 40px 0 120px;
+  margin: 0 auto;
+}
+
+.news-detail h1 {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: #222;
+}
+
+.news-detail-date {
+  color: #777;
+  font-size: 15px;
+  margin-bottom: 24px;
+}
+
+.news-detail-divider {
+  width: 100%;
+  height: 1px;
+  background: #e5e5e5;
+  margin-bottom: 24px;
+}
+
+.news-content {
+  font-size: 17px;
+  color: #444;
+  line-height: 1.8;
+  white-space: pre-line; /* 줄바꿈 유지 */
+  margin-bottom: 60px;
+}
+
+.news-detail-image {
+  width: 100%;
+  max-width: 800px;
+  margin: 20px 0;
+  border-radius: 10px;
+}

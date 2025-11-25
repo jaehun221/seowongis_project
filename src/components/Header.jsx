@@ -15,62 +15,64 @@ export default function Header() {
       <div className="header">
         <div className="container header-wrap">
 
-          <Link
-            to="/"
-            className="logo d-inline-flex align-items-center h-100"
-          >
-            <img src={logo} className="logo-img" alt="지오스토리" />
+          <Link to="/" className="logo d-inline-flex align-items-center h-100">
+            <img src={logo} className="logo-img" alt="서원공간정보" />
           </Link>
 
           <Nav />
         </div>
       </div>
 
-      {/* mega menu */}
+      {/* MEGA MENU */}
       <div className={`mega-menu ${open ? "show" : ""}`}>
         <div className="container mega-menu-inner">
 
+          {/* ABOUT */}
           <div className="mega-col">
             <p className="mega-title">About</p>
-            <a href="/about/intro">지오스토리</a>
-            <a href="/about/ci">CI</a>
-            <a href="/about/history">연혁</a>
-            <a href="/about/business_performance">주요 사업실적</a>
-            <a href="/about/certificate">주요 인증현황</a>
-            <a href="/about/management">경영지침</a>
-            <a href="/about/location">오시는 길</a>
+            <Link to="/about/intro">서원공간정보</Link>
+            <Link to="/about/ci">CI</Link>
+            <Link to="/about/history">연혁</Link>
+            <Link to="/about/business_performance">주요 사업실적</Link>
+            <Link to="/about/certificate">주요 인증현황</Link>
+            <Link to="/about/management">경영지침</Link>
+            <Link to="/about/location">오시는 길</Link>
           </div>
 
+          {/* BUSINESS */}
           <div className="mega-col">
             <p className="mega-title">Business</p>
-            <a href="/business/business_1">항공사진 촬영</a>
-            <a href="/business/business_12">정사영상 제작</a>
-            <a href="/business/business_2">수치표고자료 제작</a>
-            <a href="/business/business_3">수치지도 제작</a>
-            <a href="/business/business_4">지하시설물 측량</a>
-            <a href="/business/business_5">3차원 모델링 제작</a>
-            <a href="/business/business_6">MMS 측량</a>
-            <a href="/business/business_7">초분광 영상처리</a>
-            <a href="/business/business_8">초분광 장비판매/컨설팅</a>
-            <a href="/business/business_9">항공수심측량</a>
-            <a href="/business/business_10">R&D</a>
+            <Link to="/business/business_1">항공사진 촬영</Link>
+            <Link to="/business/business_12">정사영상 제작</Link>
+            <Link to="/business/business_2">수치표고자료 제작</Link>
+            <Link to="/business/business_3">수치지도 제작</Link>
+            <Link to="/business/business_4">지하시설물 측량</Link>
+            <Link to="/business/business_5">3차원 모델링 제작</Link>
+            <Link to="/business/business_6">MMS 측량</Link>
+            <Link to="/business/business_7">초분광 영상처리</Link>
+            <Link to="/business/business_8">초분광 장비판매/컨설팅</Link>
+            <Link to="/business/business_9">항공수심측량</Link>
+            <Link to="/business/business_10">R&D</Link>
           </div>
 
+          {/* EQUIPMENT */}
           <div className="mega-col">
             <p className="mega-title">Equipment</p>
-            <a href="/equipment/equipment">장비 목록</a>
+            <Link to="/equipment">장비 목록</Link>
           </div>
 
+          {/* NEWS */}
           <div className="mega-col">
             <p className="mega-title">News</p>
-            <a href="/news/news">뉴스</a>
-            <a href="/news/data">자료실</a>
+            <Link to="/news">뉴스</Link>
+            <Link to="/archive">자료실</Link>
           </div>
 
+          {/* RECRUIT */}
           <div className="mega-col">
             <p className="mega-title">Recruit</p>
-            <a href="/recruit/talent_recruitment">인재채용</a>
-            <a href="/recruit/recruitment_announcement">채용공고</a>
+            <Link to="/recruit/talent_recruitment">인재채용</Link>
+            <Link to="/recruit/recruitment_announcement">채용공고</Link>
           </div>
 
         </div>

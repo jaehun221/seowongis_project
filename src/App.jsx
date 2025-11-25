@@ -7,8 +7,9 @@ import Home from "./pages/Home";
 import About from "./pages/about/About";
 import Business from "./pages/business/Business";
 import Equipment from "./pages/equipment/Equipment";
-import News from "./pages/news/News.jsx";
 import Recruit from "./pages/recruit/Recruit";
+import News from "./pages/news";    // index.jsx를 자동 인식
+
 
 export default function App() {
   return (

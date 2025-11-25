@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "서원공간정보 홈페이지 리뉴얼",
+    "date": "2025-02-20",
+    "content": "서원공간정보는 새로운 UI/UX로 홈페이지를 리뉴얼하였습니다.",
+    "image": "/src/assets/images/news/news.jpg"
+  },
+  {
+    "id": 2,
+    "title": "항공사진 측량 장비 도입",
+    "date": "2025-03-01",
+    "content": "최신 항공사진 측량 장비를 도입하여 측량 품질을 높였습니다.",
+    "image": "/src/assets/images/news/news2.jpg"
+  }
+]
