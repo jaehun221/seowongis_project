@@ -33,7 +33,7 @@ export default function App() {
           <Route path="/news/*" element={<News />} />
 
           {/* Recruit group */}
-          <Route path="/recruit/*" element={<Recruit />} />
+          <Route path="/recruit/talent_recruitment" element={<Recruit />} />
         </Routes>
       </main>
 

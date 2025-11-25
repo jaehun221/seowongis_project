@@ -31,7 +31,6 @@ export default function Header() {
           <div className="mega-col">
             <p className="mega-title">기업소개</p>
             <Link to="/about/intro">서원공간정보</Link>
-            <Link to="/about/ci">CI</Link>
             <Link to="/about/history">연혁</Link>
             <Link to="/about/business_performance">주요 사업실적</Link>
             <Link to="/about/certificate">주요 인증현황</Link>
@@ -42,17 +41,7 @@ export default function Header() {
           {/* BUSINESS */}
           <div className="mega-col">
             <p className="mega-title">주요사업</p>
-            <Link to="/business/business_1">항공사진 촬영</Link>
-            <Link to="/business/business_12">정사영상 제작</Link>
-            <Link to="/business/business_2">수치표고자료 제작</Link>
-            <Link to="/business/business_3">수치지도 제작</Link>
-            <Link to="/business/business_4">지하시설물 측량</Link>
-            <Link to="/business/business_5">3차원 모델링 제작</Link>
-            <Link to="/business/business_6">MMS 측량</Link>
-            <Link to="/business/business_7">초분광 영상처리</Link>
-            <Link to="/business/business_8">초분광 장비판매/컨설팅</Link>
-            <Link to="/business/business_9">항공수심측량</Link>
-            <Link to="/business/business_10">R&D</Link>
+            
           </div>
 
           {/* EQUIPMENT */}
@@ -70,9 +59,8 @@ export default function Header() {
 
           {/* RECRUIT */}
           <div className="mega-col">
-            <p className="mega-title">채용</p>
-            <Link to="/recruit/talent_recruitment">인재채용</Link>
-            <Link to="/recruit/recruitment_announcement">채용공고</Link>
+            <p className="mega-title">인재채용</p>
+            <Link to="/recruit/talent_recruitment">채용정보</Link>
           </div>
 
         </div>
