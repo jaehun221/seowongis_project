@@ -7,31 +7,31 @@ export default function Nav() {
 
         <li className="nav-list__item">
           <Link to="/about/intro" className="link">
-            <span>About</span>
+            <span>소개</span>
           </Link>
         </li>
 
         <li className="nav-list__item">
           <Link to="/business/business_1" className="link">
-            <span>Business</span>
+            <span>주요사업</span>
           </Link>
         </li>
 
         <li className="nav-list__item">
           <Link to="/equipment" className="link">
-            <span>Equipment</span>
+            <span>보유장비</span>
           </Link>
         </li>
 
         <li className="nav-list__item">
           <Link to="/news" className="link">
-            <span>News</span>
+            <span>게시판</span>
           </Link>
         </li>
 
         <li className="nav-list__item">
           <Link to="/recruit/talent_recruitment" className="link">
-            <span>Recruit</span>
+            <span>채용</span>
           </Link>
         </li>
 

@@ -29,7 +29,7 @@ export default function Header() {
 
           {/* ABOUT */}
           <div className="mega-col">
-            <p className="mega-title">About</p>
+            <p className="mega-title">기업소개</p>
             <Link to="/about/intro">서원공간정보</Link>
             <Link to="/about/ci">CI</Link>
             <Link to="/about/history">연혁</Link>
@@ -41,7 +41,7 @@ export default function Header() {
 
           {/* BUSINESS */}
           <div className="mega-col">
-            <p className="mega-title">Business</p>
+            <p className="mega-title">주요사업</p>
             <Link to="/business/business_1">항공사진 촬영</Link>
             <Link to="/business/business_12">정사영상 제작</Link>
             <Link to="/business/business_2">수치표고자료 제작</Link>
@@ -57,20 +57,20 @@ export default function Header() {
 
           {/* EQUIPMENT */}
           <div className="mega-col">
-            <p className="mega-title">Equipment</p>
+            <p className="mega-title">보유장비</p>
             <Link to="/equipment">장비 목록</Link>
           </div>
 
           {/* NEWS */}
           <div className="mega-col">
-            <p className="mega-title">News</p>
+            <p className="mega-title">게시판</p>
             <Link to="/news">뉴스</Link>
             <Link to="/archive">자료실</Link>
           </div>
 
           {/* RECRUIT */}
           <div className="mega-col">
-            <p className="mega-title">Recruit</p>
+            <p className="mega-title">채용</p>
             <Link to="/recruit/talent_recruitment">인재채용</Link>
             <Link to="/recruit/recruitment_announcement">채용공고</Link>
           </div>
