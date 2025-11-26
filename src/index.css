@@ -7,7 +7,6 @@
   box-sizing: border-box;
 }
 
-
 body {
   margin: 0;
   padding: 0;
@@ -26,8 +25,8 @@ ul, li {
 }
 
 .container {
-  max-width: 1440px;  /* ← FIX */
-  width: 100%;        /* ← FIX */
+  max-width: 1440px; 
+  width: 100%; 
   padding: 0 24px;
   margin: 0 auto;
 }
@@ -84,7 +83,6 @@ ul, li {
   padding-right: 0 !important;
 }
 
-
 .nav-list {
   list-style: none;
 }
@@ -134,7 +132,6 @@ ul, li {
   padding: 20px 0;
   display: none;
   flex-direction: column;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 }
 
 .nav-list--depth2 li {
@@ -164,17 +161,15 @@ ul, li {
   width: 200px;
   padding: 20px 0;
   display: none;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 }
 
 .nav-list--depth2 > .nav-list__item:hover > .nav-list--depth3 {
   display: block;
 }
 
+
 /* ================================================
    MEGA MENU (전체 드롭다운)
-   - 기존 네비 설정값은 건드리지 않음
-   - Header hover 시 전체 메뉴가 슬라이드다운됨
 ================================================ */
 
 /* 기존 depth2 메뉴는 숨김 처리 (mega-menu를 사용하므로) */
@@ -199,8 +194,6 @@ ul, li {
 
   /* 애니메이션 */
   transition: max-height 0.35s ease, opacity 0.35s ease;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-  z-index: 50;
 }
 
 /* 보여줄 때 */
@@ -239,6 +232,7 @@ ul, li {
 .mega-col a:hover {
   color: #0090ff;
 }
+
 
 /* ================================================
    FOOTER
@@ -287,6 +281,7 @@ ul, li {
 }
 
 
+/* LOCATION PAGE */
 .location-page {
   max-width: 1200px;
   padding: 40px 20px;
@@ -302,7 +297,10 @@ ul, li {
 }
 
 
-/* NEWS PAGE */
+/* ================================================
+   NEWS PAGE
+================================================ */
+
 .news-page {
   padding: 40px 0 80px;
 }
@@ -313,8 +311,8 @@ ul, li {
   font-weight: 800;
   color: #222;
   border-left: 6px solid #0054a6; /* 포인트 컬러 */
-  padding-left: 16px;   /* ← 추가! */
-  margin-left: 4px;     /* ← 살짝 띄울 경우 선택 */
+  padding-left: 16px;
+  margin-left: 4px;
 }
 
 /* LIST */
@@ -335,7 +333,7 @@ ul, li {
 .news-item a {
   display: flex;
   justify-content: space-between;
-  align-items: center;  
+  align-items: center; 
   width: 100%;
   box-sizing: border-box;
   padding: 18px 4px;
@@ -445,4 +443,440 @@ ul, li {
 .home-hero-text p {
   font-size: 18px;
   opacity: 0.9;
+}
+
+
+/* ================================================
+   HOME - 공통 섹션 스타일
+================================================ */
+
+.home-section {
+  padding: 80px 0;
+}
+
+.home-section-inner {
+  display: flex;
+  gap: 48px;
+  align-items: stretch;
+}
+
+.home-section-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #222;
+  margin: 0 0 12px;
+  border-left: 6px solid #0054a6;
+  padding-left: 16px;
+}
+
+.home-section-subtitle {
+  margin: 0;
+  font-size: 16px;
+  color: #666;
+  line-height: 1.7;
+}
+
+/* 버튼 스타일 */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 1px solid #0054a6;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0054a6;
+  background: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-outline:hover {
+  background: #0054a6;
+  color: #fff;
+}
+
+/* 섹션 헤더 (제목 + 버튼) */
+.home-section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+
+/* ================================================
+   HOME - 회사 소개
+================================================ */
+
+.home-about {
+  background: #f8faff;
+}
+
+.home-about-left {
+  flex: 1.4;
+}
+
+.home-about-right {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+}
+
+.home-about-body {
+  margin-top: 16px;
+  margin-bottom: 24px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #444;
+}
+
+.home-about-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.home-about-badge {
+  flex: 1 1 220px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e3ecff;
+  padding: 16px 20px;
+}
+
+.home-about-badge .badge-label {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0054a6;
+  margin-bottom: 8px;
+}
+
+.home-about-badge ul {
+  margin: 0;
+  padding-left: 16px;
+}
+
+.home-about-badge li {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.6;
+  list-style: disc;
+}
+
+.home-about-card {
+  width: 100%;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e0e6f4;
+  padding: 24px 24px 20px;
+}
+
+.home-about-card h3 {
+  margin: 0 0 16px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #222;
+}
+
+.home-about-card dl {
+  margin: 0 0 12px;
+}
+
+.home-about-card dl > div {
+  display: flex;
+  margin-bottom: 6px;
+}
+
+.home-about-card dt {
+  min-width: 72px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #666;
+}
+
+.home-about-card dd {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.home-about-note {
+  margin: 10px 0 0;
+  font-size: 12px;
+  color: #888;
+  line-height: 1.6;
+}
+
+
+/* ================================================
+   HOME - 인증/특허 공통 캐러셀 (무한 롤링)
+================================================ */
+
+.home-cert {
+  background: #eef5ff;
+}
+
+.home-patent {
+  background: #f3f8ff;
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 16px 0 4px;
+  /* 마우스 호버 시 멈춤을 방지하기 위해 포인터 이벤트를 막습니다. */
+  pointer-events: none; 
+}
+
+.carousel-track {
+  display: flex;
+  /* 간격을 120px로 넓힘 */
+  gap: 80px; 
+  width: max-content;
+  will-change: transform;
+}
+
+/* 왼쪽으로 흐르는 애니메이션 (인증) */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* 전체 트랙 길이의 50%만큼 이동 */
+    transform: translateX(-50%);
+  }
+}
+
+/* 오른쪽으로 흐르는 애니메이션 (특허) */
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* 인증: 왼쪽으로 흐름 */
+.carousel--right .carousel-track {
+  /* 속도: 180s (숫자가 클수록 더 느림) */
+  animation: scroll-left 180s linear infinite;
+}
+
+/* 특허: 오른쪽으로 흐름 */
+.carousel--left .carousel-track {
+  animation: scroll-right 180s linear infinite;
+}
+
+.carousel-item {
+  flex: 0 0 220px;
+  /* 캐러셀이 pointer-events: none; 이므로, 개별 항목에 링크나 클릭이 필요하면 다시 활성화해야 합니다. */
+  pointer-events: auto;
+}
+
+
+/* ================================================
+   HOME - 인증 카드
+================================================ */
+
+.cert-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px 14px 16px;
+  border: 1px solid rgba(0, 84, 166, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+}
+
+.cert-thumb-wrap {
+  width: 100%;
+  padding-top: 140%; /* 세로형 증서 비율 */
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f1f5ff;
+}
+
+.cert-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cert-info h3 {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #222;
+}
+
+.cert-info p {
+  margin: 0;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+}
+
+
+/* ================================================
+   HOME - 특허 카드
+================================================ */
+
+.patent-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px 14px 16px;
+  border: 1px solid #e0e6f4;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+}
+
+.patent-thumb-wrap {
+  width: 100%;
+  padding-top: 140%;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f6f7fb;
+}
+
+.patent-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.patent-info h3 {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #222;
+}
+
+.patent-info p {
+  margin: 0;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+}
+
+
+/* ================================================
+   HOME - 협력사 로고
+================================================ */
+
+.home-partners {
+  background: #fff;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px; 
+  margin-top: 32px;
+}
+
+.partner-card {
+  border-radius: 14px;
+  border: 1px solid #e5e7ef;
+  background: #fafbff;
+  padding: 18px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.partner-card:hover {
+  transform: translateY(-4px);
+  background: #f0f4ff;
+}
+
+.partner-logo-wrap {
+  width: 110px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.partner-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.partner-name {
+  margin: 0;
+  font-size: 14px;
+  color: #444;
+  text-align: center;
+}
+
+
+/* ================================================
+   HOME - 반응형
+================================================ */
+
+@media (max-width: 1024px) {
+  .home-section-inner {
+    flex-direction: column;
+  }
+
+  .partners-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .home-section {
+    padding: 56px 0;
+  }
+
+  .home-section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .home-section-title {
+    font-size: 26px;
+  }
+
+  .home-hero {
+    height: 380px;
+  }
+
+  .home-hero-text h1 {
+    font-size: 32px;
+  }
+
+  .carousel-item {
+    flex-basis: 180px;
+  }
+
+  .partners-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .partners-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .home-about-badge {
+    flex: 1 1 100%;
+  }
 }
