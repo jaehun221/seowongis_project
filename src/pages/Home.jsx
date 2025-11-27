@@ -1,5 +1,12 @@
+// home.jsx
+
+import React, { useEffect, useRef, useState } from 'react';
 import "../index.css";
 import mainImg from "../assets/images/main/main.png";
+
+// ===============================================
+// 데이터 정의 (실제 환경에 맞게 경로 확인 필요)
+// ===============================================
 
 // Dynamically import all certification images
 const certificationImageModules = import.meta.glob('../assets/images/home/인증/*.png', { eager: true, as: 'url' });
@@ -23,44 +30,116 @@ const PATENTS = Object.entries(patentImageModules).map(([path, url], index) => {
   };
 });
 
-// 협력사 로고 import - 파일 존재 시 추가
-// import partnerA from "../assets/images/home/partners/partner-a.png";
-// import partnerB from "../assets/images/home/partners/partner-b.png";
-// import partnerC from "../assets/images/home/partners/partner-c.png";
-// import partnerD from "../assets/images/home/partners/partner-d.png";
-
 const PARTNERS = [
-  {
-    id: 1,
-    name: "공공기관 A",
-    logo: null, // 파일 준비 후 추가
-  },
-  {
-    id: 2,
-    name: "지자체 B",
-    logo: null, // 파일 준비 후 추가
-  },
-  {
-    id: 3,
-    name: "엔지니어링사 C",
-    logo: null, // 파일 준비 후 추가
-  },
-  {
-    id: 4,
-    name: "IT·플랫폼사 D",
-    logo: null, // 파일 준비 후 추가
-  },
+  { id: 1, name: "공공기관 A", logo: null },
+  { id: 2, name: "지자체 B", logo: null },
+  { id: 3, name: "엔지니어링사 C", logo: null },
+  { id: 4, name: "IT·플랫폼사 D", logo: null },
 ];
 
+// ===============================================
+// 💡 커스텀 훅: Intersection Observer
+// 캐러셀이 30% 보일 때 isVisible 상태를 변경합니다.
+// ===============================================
+const useIntersectionObserver = (ref, threshold = 0.3) => {
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                // 요소가 30% 이상 보이면 true (등장)
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                } else if (isVisible) {
+                    // 요소가 화면 밖으로 완전히 나가면 false (퇴장)
+                    setIsVisible(false);
+                }
+            },
+            { threshold: threshold }
+        );
+
+        if (ref.current) {
+            observer.observe(ref.current);
+        }
+
+        return () => {
+            if (ref.current) {
+                observer.unobserve(ref.current);
+            }
+        };
+    }, [ref, threshold, isVisible]); 
+
+    return isVisible;
+};
+
+
 export default function Home() {
+  
   // 끊김 없는 무한 롤링을 위해 데이터를 4배로 복제
   const duplicatedCerts = [
     ...CERTIFICATIONS, ...CERTIFICATIONS, ...CERTIFICATIONS, ...CERTIFICATIONS
   ];
-  
   const duplicatedPatents = [
     ...PATENTS, ...PATENTS, ...PATENTS, ...PATENTS
   ];
+
+  // 💡 Ref 설정
+  const certCarouselRef = useRef(null);
+  const patentCarouselRef = useRef(null);
+
+  // 💡 가시성 감지
+  const isCertVisible = useIntersectionObserver(certCarouselRef, 0.3); 
+  const isPatentVisible = useIntersectionObserver(patentCarouselRef, 0.3);
+
+  const [certStage, setCertStage] = useState("hidden-right");
+  const [patentStage, setPatentStage] = useState("hidden-left");
+
+  const certExitTimerRef = useRef(null);
+  const patentExitTimerRef = useRef(null);
+  const prevCertVisibleRef = useRef(false);
+  const prevPatentVisibleRef = useRef(false);
+
+  useEffect(() => {
+    if (isCertVisible && !prevCertVisibleRef.current) {
+      if (certExitTimerRef.current) {
+        clearTimeout(certExitTimerRef.current);
+      }
+      setCertStage("visible");
+    } else if (!isCertVisible && prevCertVisibleRef.current) {
+      setCertStage("exiting-left");
+      certExitTimerRef.current = setTimeout(() => {
+        setCertStage("hidden-right");
+      }, 320);
+    }
+    prevCertVisibleRef.current = isCertVisible;
+  }, [isCertVisible]);
+
+  useEffect(() => {
+    if (isPatentVisible && !prevPatentVisibleRef.current) {
+      if (patentExitTimerRef.current) {
+        clearTimeout(patentExitTimerRef.current);
+      }
+      setPatentStage("visible");
+    } else if (!isPatentVisible && prevPatentVisibleRef.current) {
+      setPatentStage("exiting-right");
+      patentExitTimerRef.current = setTimeout(() => {
+        setPatentStage("hidden-left");
+      }, 320);
+    }
+    prevPatentVisibleRef.current = isPatentVisible;
+  }, [isPatentVisible]);
+
+  useEffect(() => {
+    return () => {
+      if (certExitTimerRef.current) {
+        clearTimeout(certExitTimerRef.current);
+      }
+      if (patentExitTimerRef.current) {
+        clearTimeout(patentExitTimerRef.current);
+      }
+    };
+  }, []);
+
 
   return (
     <div className="home">
@@ -182,9 +261,13 @@ export default function Home() {
           </div>
         </div> 
 
-        {/* Full width carousel */}
-        <div className="carousel carousel--right">
-          <div className="carousel-track">
+        {/* Full width carousel - Ref 추가 */}
+        <div className="carousel carousel--right" ref={certCarouselRef}>
+          {/* 💡 is-active 클래스 동적 적용 */}
+          <div
+            className={`carousel-track ${certStage === "visible" ? 'is-active' : ''}`}
+            data-stage={certStage}
+          >
             {duplicatedCerts.map((cert, index) => (
               <div className="carousel-item" key={`cert-${index}`}>
                 <div className="cert-card">
@@ -214,9 +297,13 @@ export default function Home() {
           </div>
         </div> 
 
-        {/* Full width carousel */}
-        <div className="carousel carousel--left">
-          <div className="carousel-track">
+        {/* Full width carousel - Ref 추가 */}
+        <div className="carousel carousel--left" ref={patentCarouselRef}>
+          {/* 💡 is-active 클래스 동적 적용 */}
+          <div
+            className={`carousel-track ${patentStage === "visible" ? 'is-active' : ''}`}
+            data-stage={patentStage}
+          >
             {duplicatedPatents.map((pt, index) => (
               <div className="carousel-item" key={`patent-${index}`}>
                 <div className="patent-card">
