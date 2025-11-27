@@ -7,7 +7,6 @@
   box-sizing: border-box;
 }
 
-
 body {
   margin: 0;
   padding: 0;
@@ -26,8 +25,8 @@ ul, li {
 }
 
 .container {
-  max-width: 1440px;  /* ← FIX */
-  width: 100%;        /* ← FIX */
+  max-width: 1440px; 
+  width: 100%; 
   padding: 0 24px;
   margin: 0 auto;
 }
@@ -84,7 +83,6 @@ ul, li {
   padding-right: 0 !important;
 }
 
-
 .nav-list {
   list-style: none;
 }
@@ -134,7 +132,6 @@ ul, li {
   padding: 20px 0;
   display: none;
   flex-direction: column;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 }
 
 .nav-list--depth2 li {
@@ -164,17 +161,15 @@ ul, li {
   width: 200px;
   padding: 20px 0;
   display: none;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 }
 
 .nav-list--depth2 > .nav-list__item:hover > .nav-list--depth3 {
   display: block;
 }
 
+
 /* ================================================
    MEGA MENU (전체 드롭다운)
-   - 기존 네비 설정값은 건드리지 않음
-   - Header hover 시 전체 메뉴가 슬라이드다운됨
 ================================================ */
 
 /* 기존 depth2 메뉴는 숨김 처리 (mega-menu를 사용하므로) */
@@ -199,26 +194,21 @@ ul, li {
 
   /* 애니메이션 */
   transition: max-height 0.35s ease, opacity 0.35s ease;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-  z-index: 50;
-  border-bottom: 1px solid #eee;
 }
 
 /* 보여줄 때 */
 .mega-menu.show {
-  max-height: 900px;
+  max-height: 500px;
   opacity: 1;
   pointer-events: auto;
 }
 
-/* MEGA MENU INNER - 여백 문제 해결 */
+/* 내부 레이아웃 */
 .mega-menu-inner {
-  position: relative;
   display: flex;
   justify-content: space-between;
-  padding: 0 0 30px !important; /* 👈 아래 여백 확실하게 */
+  padding: 32px 0;
 }
-
 
 .mega-col {
   display: flex;
@@ -242,6 +232,7 @@ ul, li {
 .mega-col a:hover {
   color: #0090ff;
 }
+
 
 /* ================================================
    FOOTER
@@ -290,6 +281,7 @@ ul, li {
 }
 
 
+/* LOCATION PAGE */
 .location-page {
   max-width: 1200px;
   padding: 40px 20px;
@@ -305,7 +297,10 @@ ul, li {
 }
 
 
-/* NEWS PAGE */
+/* ================================================
+   NEWS PAGE
+================================================ */
+
 .news-page {
   padding: 40px 0 80px;
 }
@@ -316,8 +311,8 @@ ul, li {
   font-weight: 800;
   color: #222;
   border-left: 6px solid #0054a6; /* 포인트 컬러 */
-  padding-left: 16px;   /* ← 추가! */
-  margin-left: 4px;     /* ← 살짝 띄울 경우 선택 */
+  padding-left: 16px;
+  margin-left: 4px;
 }
 
 /* LIST */
@@ -338,7 +333,7 @@ ul, li {
 .news-item a {
   display: flex;
   justify-content: space-between;
-  align-items: center;  
+  align-items: center; 
   width: 100%;
   box-sizing: border-box;
   padding: 18px 4px;
@@ -450,338 +445,411 @@ ul, li {
   opacity: 0.9;
 }
 
-/* ================================================
-   HOME PAGE
-================================================ */
-
-/* ABOUT SECTION */
-.home-about {
-  padding: 80px 0;
-  text-align: center;
-}
-
-.home-about h2 {
-  font-size: 32px;
-  font-weight: 800;
-  margin-bottom: 20px;
-}
-
-.home-about p {
-  font-size: 18px;
-  color: #555;
-  max-width: 800px;
-  margin: 0 auto 30px;
-  line-height: 1.7;
-}
-
-.btn-more {
-  display: inline-block;
-  padding: 12px 26px;
-  background: #0054a6;
-  color: #fff;
-  border-radius: 6px;
-  font-size: 16px;
-  transition: 0.25s;
-}
-
-.btn-more:hover {
-  background: #003f7e;
-}
-
-/* BUSINESS SECTION */
-.home-business {
-  background: #f8faff;
-  padding: 80px 0;
-}
-
-.home-business h2 {
-  font-size: 32px;
-  font-weight: 800;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.business-cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 26px;
-}
-
-.business-card {
-  background: #fff;
-  padding: 30px 22px;
-  text-align: center;
-  border-radius: 10px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-  transition: transform 0.25s, box-shadow 0.25s;
-}
-
-.business-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 26px rgba(0,0,0,0.1);
-}
-
-.business-card .icon {
-  font-size: 42px;
-  margin-bottom: 14px;
-}
-
-.business-card h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.business-card p {
-  color: #666;
-}
-
-/* NEWS PREVIEW */
-.home-news {
-  padding: 80px 0;
-}
-
-.home-news h2 {
-  font-size: 32px;
-  font-weight: 800;
-  margin-bottom: 20px;
-}
-
-.home-news-list li {
-  border-bottom: 1px solid #eee;
-  padding: 14px 0;
-}
-
-.home-news-list li a {
-  font-size: 18px;
-  color: #222;
-  transition: 0.25s;
-}
-
-.home-news-list li a:hover {
-  color: #0054a6;
-}
 
 /* ================================================
-   HOME HERO
-================================================ */
-
-.home-hero {
-  position: relative;
-  width: 100%;
-  height: 420px;
-  overflow: hidden;
-}
-
-.home-hero-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scale(1.02);
-  filter: brightness(0.8);
-}
-
-.home-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(0, 40, 90, 0.75) 0%,
-    rgba(0, 40, 90, 0.3) 45%,
-    rgba(0, 0, 0, 0) 100%
-  );
-}
-
-.home-hero-inner {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: #fff;
-}
-
-.home-hero-badge {
-  display: inline-block;
-  padding: 6px 14px;
-  font-size: 12px;
-  letter-spacing: 0.16em;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  margin-bottom: 18px;
-}
-
-.home-hero-inner h1 {
-  font-size: 40px;
-  line-height: 1.3;
-  margin: 0 0 16px;
-  font-weight: 800;
-}
-
-.home-hero-inner p {
-  font-size: 17px;
-  max-width: 520px;
-  margin: 0 0 26px;
-  color: #e5e9f2;
-}
-
-.home-hero-actions {
-  display: flex;
-  gap: 12px;
-}
-
-/* 버튼 공통 */
-.btn-primary,
-.btn-outline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 22px;
-  border-radius: 999px;
-  font-size: 15px;
-  font-weight: 600;
-  border: 1px solid transparent;
-  transition: 0.25s;
-  cursor: pointer;
-}
-
-.btn-primary {
-  background: #0054a6;
-  color: #fff;
-  border-color: #0054a6;
-}
-
-.btn-primary:hover {
-  background: #003f79;
-  border-color: #003f79;
-}
-
-.btn-outline {
-  background: transparent;
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.7);
-}
-
-.btn-outline:hover {
-  background: rgba(255, 255, 255, 0.12);
-}
-
-/* ================================================
-   STRIP STATS
-================================================ */
-
-.home-strip {
-  background: #0c2550;
-  color: #e9f0ff;
-}
-
-.home-strip-inner {
-  display: flex;
-  justify-content: space-between;
-  gap: 32px;
-  padding: 18px 0;
-}
-
-.home-strip-item {
-  flex: 1;
-  border-left: 1px solid rgba(255, 255, 255, 0.22);
-  padding-left: 18px;
-}
-
-.home-strip-item:first-child {
-  border-left: none;
-  padding-left: 0;
-}
-
-.home-strip-item .label {
-  font-size: 12px;
-  opacity: 0.7;
-  display: block;
-  margin-bottom: 4px;
-}
-
-.home-strip-item strong {
-  font-size: 15px;
-}
-
-/* ================================================
-   HOME SECTIONS 공통
+   HOME - 공통 섹션 스타일
 ================================================ */
 
 .home-section {
   padding: 80px 0;
 }
 
-.home-section--light {
-  background: #f7f9fc;
+.home-section-inner {
+  display: flex;
+  gap: 48px;
+  align-items: stretch;
 }
 
-.home-section--split {
-  background: #ffffff;
-}
-
-.home-section-header {
-  margin-bottom: 32px;
-}
-
-.home-section-header h2 {
-  font-size: 28px;
+.home-section-title {
+  font-size: 32px;
   font-weight: 800;
-  margin-bottom: 8px;
+  color: #222;
+  margin: 0 0 12px;
+  border-left: 6px solid #0054a6;
+  padding-left: 16px;
 }
 
-.home-section-header p {
+.home-section-subtitle {
+  margin: 0;
   font-size: 16px;
   color: #666;
-}
-
-/* ================================================
-   SERVICE CARDS
-================================================ */
-
-.home-service-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 26px;
-}
-
-.home-service-card {
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 28px 24px;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.04);
-  transition: transform 0.25s, box-shadow 0.25s;
-}
-
-.home-service-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
-}
-
-.home-service-card .emoji {
-  font-size: 34px;
-  margin-bottom: 10px;
-}
-
-.home-service-card h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.home-service-card p {
-  font-size: 15px;
-  color: #555;
   line-height: 1.7;
-  margin-bottom: 14px;
 }
 
-.card-link {
+/* 버튼 스타일 */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 1px solid #0054a6;
   font-size: 14px;
   font-weight: 600;
   color: #0054a6;
+  background: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
 }
 
+.btn-outline:hover {
+  background: #0054a6;
+  color: #fff;
+}
+
+/* 섹션 헤더 (제목 + 버튼) */
+.home-section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+
 /* ================================================
-   SPLIT SECTION (강점)
+   HOME - 회사 소개
+================================================ */
+
+.home-about {
+  background: #f8faff;
+}
+
+.home-about-left {
+  flex: 1.4;
+}
+
+.home-about-right {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+}
+
+.home-about-body {
+  margin-top: 16px;
+  margin-bottom: 24px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #444;
+}
+
+.home-about-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.home-about-badge {
+  flex: 1 1 220px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e3ecff;
+  padding: 16px 20px;
+}
+
+.home-about-badge .badge-label {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0054a6;
+  margin-bottom: 8px;
+}
+
+.home-about-badge ul {
+  margin: 0;
+  padding-left: 16px;
+}
+
+.home-about-badge li {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.6;
+  list-style: disc;
+}
+
+.home-about-card {
+  width: 100%;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e0e6f4;
+  padding: 24px 24px 20px;
+}
+
+.home-about-card h3 {
+  margin: 0 0 16px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #222;
+}
+
+.home-about-card dl {
+  margin: 0 0 12px;
+}
+
+.home-about-card dl > div {
+  display: flex;
+  margin-bottom: 6px;
+}
+
+.home-about-card dt {
+  min-width: 72px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #666;
+}
+
+.home-about-card dd {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.home-about-note {
+  margin: 10px 0 0;
+  font-size: 12px;
+  color: #888;
+  line-height: 1.6;
+}
+
+
+/* ================================================
+   HOME - 인증/특허 공통 캐러셀 (무한 롤링 + 스크롤 애니메이션)
+================================================ */
+
+.home-cert {
+  background: #eef5ff;
+}
+
+.home-patent {
+  background: #f3f8ff;
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 16px 0 4px;
+  pointer-events: none; 
+}
+
+.carousel-track {
+  display: flex;
+  gap: 80px; 
+  width: max-content;
+  will-change: transform, opacity;
+  transition: transform 0.32s ease-out, opacity 0.32s ease-out;
+  opacity: 0; /* 기본은 안 보이게 시작 */
+}
+
+/* 왼쪽으로 흐르는 애니메이션 (인증) */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* 오른쪽으로 흐르는 애니메이션 (특허) */
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* 인증: 보일 때만 왼쪽으로 흐름 */
+.carousel--right .carousel-track.is-active {
+  animation: scroll-left 180s linear infinite;
+}
+
+/* 특허: 보일 때만 오른쪽으로 흐름 */
+.carousel--left .carousel-track.is-active {
+  animation: scroll-right 180s linear infinite;
+}
+
+/* ===== 스크롤 등장/퇴장 애니메이션 ===== */
+/* 인증: 오른쪽에서 등장, 오른쪽으로 퇴장 */
+.carousel--right .carousel-track[data-stage="hidden-right"],
+.carousel--right .carousel-track[data-stage="exiting-right"] {
+  opacity: 0;
+  transform: translateX(120px);
+}
+
+.carousel--right .carousel-track[data-stage="visible"] {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* 특허: 왼쪽에서 등장, 왼쪽으로 퇴장 */
+.carousel--left .carousel-track[data-stage="hidden-left"],
+.carousel--left .carousel-track[data-stage="exiting-left"] {
+  opacity: 0;
+  transform: translateX(-120px);
+}
+
+.carousel--left .carousel-track[data-stage="visible"] {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.carousel-item {
+  flex: 0 0 220px;
+  pointer-events: auto;
+}
+
+
+/* ================================================
+   HOME - 인증 카드
+================================================ */
+
+.cert-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px 14px 16px;
+  border: 1px solid rgba(0, 84, 166, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+}
+
+.cert-thumb-wrap {
+  width: 100%;
+  padding-top: 140%; /* 세로형 증서 비율 */
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f1f5ff;
+}
+
+.cert-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cert-info h3 {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #222;
+}
+
+.cert-info p {
+  margin: 0;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+}
+
+
+/* ================================================
+   HOME - 특허 카드
+================================================ */
+
+.patent-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px 14px 16px;
+  border: 1px solid #e0e6f4;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+}
+
+.patent-thumb-wrap {
+  width: 100%;
+  padding-top: 140%;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f6f7fb;
+}
+
+.patent-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.patent-info h3 {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #222;
+}
+
+.patent-info p {
+  margin: 0;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+}
+
+
+/* ================================================
+   HOME - 협력사 로고
+================================================ */
+
+.home-partners {
+  background: #fff;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px; 
+  margin-top: 32px;
+}
+
+.partner-card {
+  border-radius: 14px;
+  border: 1px solid #e5e7ef;
+  background: #fafbff;
+  padding: 18px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.partner-card:hover {
+  transform: translateY(-4px);
+  background: #f0f4ff;
+}
+
+.partner-logo-wrap {
+  width: 110px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.partner-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.partner-name {
+  margin: 0;
+  font-size: 14px;
+  color: #444;
+  text-align: center;
+}
+
+
+/* ================================================
+   HOME - 분할 섹션 (split)
 ================================================ */
 
 .home-split-inner {
@@ -830,6 +898,7 @@ ul, li {
   background: #0054a6;
 }
 
+
 /* ================================================
    HOME NEWS PREVIEW
 ================================================ */
@@ -874,4 +943,65 @@ ul, li {
 .business-nav-item.active {
   border-color: #4f7ad8;
   background: #eef2ff;
+}
+
+
+/* ================================================
+   HOME - 반응형
+================================================ */
+
+@media (max-width: 1024px) {
+  .home-section-inner {
+    flex-direction: column;
+  }
+
+  .home-split-inner {
+    flex-direction: column;
+  }
+
+  .partners-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .home-section {
+    padding: 56px 0;
+  }
+
+  .home-section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .home-section-title {
+    font-size: 26px;
+  }
+
+  .home-hero {
+    height: 380px;
+  }
+
+  .home-hero-text h1 {
+    font-size: 32px;
+  }
+
+  .carousel-item {
+    flex-basis: 180px;
+  }
+
+  .partners-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .partners-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .home-about-badge {
+    flex: 1 1 100%;
+    
+  }
 }
