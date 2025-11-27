@@ -1,0 +1,95 @@
+/* certification.css */
+
+.cert-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px 100px;
+  box-sizing: border-box;
+}
+
+.cert-hero {
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.cert-hero p {
+  font-size: 1rem;
+  color: #666;
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.cert-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+.cert-image-wrapper {
+  background: linear-gradient(135deg, #f3f6ff, #eef7ff);
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cert-image {
+  max-width: 100%;
+  max-height: 260px;
+  object-fit: contain;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.cert-info {
+  padding: 18px 20px 20px;
+}
+
+.cert-info h2 {
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+
+.cert-info p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .cert-page {
+    padding-top: 60px;
+  }
+
+  .cert-hero h1 {
+    font-size: 2rem;
+  }
+}
+
+.certification-title {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.certification-title-line {
+  width: 100%;
+  height: 4px;
+  background: #1c4da1;
+  margin-bottom: 40px;
+}
+
