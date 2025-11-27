@@ -614,7 +614,7 @@ ul, li {
 
 
 /* ================================================
-   HOME - 인증/특허 공통 캐러셀 (무한 롤링)
+   HOME - 인증/특허 공통 캐러셀 (무한 롤링 + 스크롤 애니메이션)
 ================================================ */
 
 .home-cert {
@@ -630,16 +630,16 @@ ul, li {
   width: 100%;
   overflow: hidden;
   padding: 16px 0 4px;
-  /* 마우스 호버 시 멈춤을 방지하기 위해 포인터 이벤트를 막습니다. */
   pointer-events: none; 
 }
 
 .carousel-track {
   display: flex;
-  /* 간격을 120px로 넓힘 */
   gap: 80px; 
   width: max-content;
-  will-change: transform;
+  will-change: transform, opacity;
+  transition: transform 0.32s ease-out, opacity 0.32s ease-out;
+  opacity: 0; /* 기본은 안 보이게 시작 */
 }
 
 /* 왼쪽으로 흐르는 애니메이션 (인증) */
@@ -648,7 +648,6 @@ ul, li {
     transform: translateX(0);
   }
   100% {
-    /* 전체 트랙 길이의 50%만큼 이동 */
     transform: translateX(-50%);
   }
 }
@@ -663,20 +662,43 @@ ul, li {
   }
 }
 
-/* 인증: 왼쪽으로 흐름 */
-.carousel--right .carousel-track {
-  /* 속도: 180s (숫자가 클수록 더 느림) */
+/* 인증: 보일 때만 왼쪽으로 흐름 */
+.carousel--right .carousel-track.is-active {
   animation: scroll-left 180s linear infinite;
 }
 
-/* 특허: 오른쪽으로 흐름 */
-.carousel--left .carousel-track {
+/* 특허: 보일 때만 오른쪽으로 흐름 */
+.carousel--left .carousel-track.is-active {
   animation: scroll-right 180s linear infinite;
+}
+
+/* ===== 스크롤 등장/퇴장 애니메이션 ===== */
+/* 인증: 오른쪽에서 등장, 오른쪽으로 퇴장 */
+.carousel--right .carousel-track[data-stage="hidden-right"],
+.carousel--right .carousel-track[data-stage="exiting-right"] {
+  opacity: 0;
+  transform: translateX(120px);
+}
+
+.carousel--right .carousel-track[data-stage="visible"] {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* 특허: 왼쪽에서 등장, 왼쪽으로 퇴장 */
+.carousel--left .carousel-track[data-stage="hidden-left"],
+.carousel--left .carousel-track[data-stage="exiting-left"] {
+  opacity: 0;
+  transform: translateX(-120px);
+}
+
+.carousel--left .carousel-track[data-stage="visible"] {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .carousel-item {
   flex: 0 0 220px;
-  /* 캐러셀이 pointer-events: none; 이므로, 개별 항목에 링크나 클릭이 필요하면 다시 활성화해야 합니다. */
   pointer-events: auto;
 }
 
@@ -827,11 +849,113 @@ ul, li {
 
 
 /* ================================================
+   HOME - 분할 섹션 (split)
+================================================ */
+
+.home-split-inner {
+  display: flex;
+  gap: 40px;
+}
+
+.home-split-left {
+  flex: 1;
+}
+
+.home-split-left h2 {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.home-split-left p {
+  color: #555;
+  line-height: 1.8;
+}
+
+.home-split-right {
+  flex: 1;
+}
+
+.home-split-right ul {
+  margin: 0;
+  padding: 0;
+}
+
+.home-split-right li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: #444;
+}
+
+.home-split-right .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-top: 7px;
+  background: #0054a6;
+}
+
+
+/* ================================================
+   HOME NEWS PREVIEW
+================================================ */
+
+.home-news-preview {
+  background: #f7f7f7;
+}
+
+.home-news-list {
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid #e5e5e5;
+}
+
+.home-news-list li {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.home-news-list li a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 4px;
+  font-size: 16px;
+}
+
+.home-news-list .title {
+  flex: 1;
+}
+
+.home-news-list .date {
+  width: 110px;
+  text-align: right;
+  font-size: 14px;
+  color: #888;
+}
+
+.home-news-more {
+  margin-top: 18px;
+}
+
+.business-nav-item.active {
+  border-color: #4f7ad8;
+  background: #eef2ff;
+}
+
+
+/* ================================================
    HOME - 반응형
 ================================================ */
 
 @media (max-width: 1024px) {
   .home-section-inner {
+    flex-direction: column;
+  }
+
+  .home-split-inner {
     flex-direction: column;
   }
 
