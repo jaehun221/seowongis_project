@@ -12,7 +12,7 @@ export default function Nav() {
         </li>
 
         <li className="nav-list__item">
-          <Link to="/business/business_1" className="link">
+          <Link to="/business" className="link">
             <span>주요사업</span>
           </Link>
         </li>

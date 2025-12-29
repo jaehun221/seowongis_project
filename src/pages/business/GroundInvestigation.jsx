@@ -1,4 +1,8 @@
 // src/pages/business/GroundInvestigation.jsx
+import mainImg from "../../assets/images/business/ground/main.jpg";
+import thumb1 from "../../assets/images/business/ground/drill.jpg";
+import thumb2 from "../../assets/images/business/ground/downhole.jpg";
+
 export default function GroundInvestigation() {
   return (
     <div className="business-section-content">
@@ -31,17 +35,17 @@ export default function GroundInvestigation() {
         <aside className="business-media-block">
           <div className="business-media-main">
             <img
-              src="/assets/images/business/ground/main.jpg"
+              src={mainImg}
               alt="지반조사 시추장비와 탐사장비"
             />
           </div>
           <div className="business-media-row">
             <img
-              src="/assets/images/business/ground/drill.jpg"
+              src={thumb1}
               alt="시추조사 장비 예시"
             />
             <img
-              src="/assets/images/business/ground/downhole.jpg"
+              src={thumb2}
               alt="Down-Hole Test 모식도 및 장비"
             />
           </div>

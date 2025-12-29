@@ -1,18 +1,12 @@
-import { Routes, Route } from "react-router-dom";
-// import Intro from "./Intro";
-import History from "./History";
-import Location from "./Location";
-import Certification from "./Certification";
-import Performance from "./Performance";
+// src/pages/about/About.jsx
+import { Outlet } from "react-router-dom";
 
 export default function About() {
   return (
-    <Routes>
-      {/* <Route path="/intro" element={<Intro />} /> */}
-      <Route path="/history" element={<History />} />
-      <Route path="/location" element={<Location />} />
-      <Route path="/certification" element={<Certification />} />
-      <Route path="/performance" element={<Performance />} />
-    </Routes>
+    <section className="about-layout">
+      {/* 여기서 공통 배너/탭/사이드메뉴 같은 레이아웃을 깔고 */}
+      {/* 그 아래에 자식 페이지가 꽂히게 Outlet */}
+      <Outlet />
+    </section>
   );
 }

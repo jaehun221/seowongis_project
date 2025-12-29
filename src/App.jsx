@@ -5,7 +5,14 @@ import Footer from "./components/Footer";
 
 // pages
 import Home from "./pages/Home";
+
+// About 레이아웃 + 세부 페이지들
 import About from "./pages/about/About";
+import History from "./pages/about/History";
+import Performance from "./pages/about/Performance";
+import Certification from "./pages/about/Certification";
+import Location from "./pages/about/Location";
+import ManagementGuideline from "./pages/about/ManagementGuideline";
 
 // Business 레이아웃 + 각 세부 페이지
 import Business from "./pages/business/Business";
@@ -34,15 +41,18 @@ export default function App() {
           {/* Home */}
           <Route path="/" element={<Home />} />
 
-          {/* About group */}
-          <Route path="/about/*" element={<About />} />
+          {/* About group - 중첩 라우팅 */}
+          <Route path="/about" element={<About />}>
+            <Route path="history" element={<History />} />
+            <Route path="performance" element={<Performance />} />
+            <Route path="certification" element={<Certification />} />
+            <Route path="guideline" element={<ManagementGuideline />} />
+            <Route path="location" element={<Location />} />
+          </Route>
 
           {/* Business group - 중첩 라우팅 */}
           <Route path="/business" element={<Business />}>
-            {/* /business : 대표 개요 페이지 */}
             <Route index element={<BusinessOverview />} />
-
-            {/* /business/... : 각 세부 페이지 */}
             <Route path="spatial-info" element={<SpatialInfo />} />
             <Route path="underground-survey" element={<UndergroundSurvey />} />
             <Route path="drone-survey" element={<DroneSurvey />} />

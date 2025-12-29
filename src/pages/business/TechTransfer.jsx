@@ -1,4 +1,8 @@
 // src/pages/business/TechTransfer.jsx
+import mainImg from "../../assets/images/business/tech/main.jpg";
+import thumb1 from "../../assets/images/business/tech/classroom-1.jpg";
+import thumb2 from "../../assets/images/business/tech/classroom-2.jpg";
+
 export default function TechTransfer() {
   return (
     <div className="business-section-content">
@@ -30,17 +34,17 @@ export default function TechTransfer() {
         <aside className="business-media-block">
           <div className="business-media-main">
             <img
-              src="/assets/images/business/tech/main.jpg"
+              src={mainImg}
               alt="수치도화 교육 및 실습 현장"
             />
           </div>
           <div className="business-media-row">
             <img
-              src="/assets/images/business/tech/classroom-1.jpg"
+              src={thumb1}
               alt="도화 교육 실습 예시 1"
             />
             <img
-              src="/assets/images/business/tech/classroom-2.jpg"
+              src={thumb2}
               alt="도화 교육 실습 예시 2"
             />
           </div>

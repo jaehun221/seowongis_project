@@ -1,4 +1,8 @@
 // src/pages/business/LandUseDB.jsx
+import mainImg from "../../assets/images/business/landuse/main.jpg";
+import thumb1 from "../../assets/images/business/landuse/city-change.jpg";
+import thumb2 from "../../assets/images/business/landuse/river-change.jpg";
+
 export default function LandUseDB() {
   return (
     <div className="business-section-content">
@@ -32,17 +36,17 @@ export default function LandUseDB() {
         <aside className="business-media-block">
           <div className="business-media-main">
             <img
-              src="/assets/images/business/landuse/main.jpg"
+              src={mainImg}
               alt="연속지적도 및 용도지역·지구 DB 정비 예시"
             />
           </div>
           <div className="business-media-row">
             <img
-              src="/assets/images/business/landuse/city-change.jpg"
+              src={thumb1}
               alt="도시지역 경계 변경 예시"
             />
             <img
-              src="/assets/images/business/landuse/river-change.jpg"
+              src={thumb2}
               alt="하천구역 변경 예시"
             />
           </div>

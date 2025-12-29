@@ -1,4 +1,8 @@
 // src/pages/business/UndergroundSurvey.jsx
+import mainImg from "../../assets/images/business/underground/main.jpg";
+import thumb1 from "../../assets/images/business/underground/map-1.jpg";
+import thumb2 from "../../assets/images/business/underground/map-2.jpg";
+
 export default function UndergroundSurvey() {
   return (
     <div className="business-section-content">
@@ -42,17 +46,17 @@ export default function UndergroundSurvey() {
         <aside className="business-media-block">
           <div className="business-media-main tall">
             <img
-              src="/assets/images/business/underground/main.jpg"
+              src={mainImg}
               alt="지하시설물 측량 현장 사진"
             />
           </div>
           <div className="business-media-row">
             <img
-              src="/assets/images/business/underground/map-1.jpg"
+              src={thumb1}
               alt="지하시설물 도면 예시"
             />
             <img
-              src="/assets/images/business/underground/map-2.jpg"
+              src={thumb2}
               alt="지하시설물 정위치 도면 예시"
             />
           </div>

@@ -1,4 +1,7 @@
 // src/pages/business/AerialPhotoAnalysis.jsx
+import mainImg from "../../assets/images/business/aerial-analysis/main.jpg";
+import thumb1 from "../../assets/images/business/aerial-analysis/past.jpg";
+import thumb2 from "../../assets/images/business/aerial-analysis/current.jpg";
 export default function AerialPhotoAnalysis() {
   return (
     <div className="business-section-content">
@@ -31,17 +34,17 @@ export default function AerialPhotoAnalysis() {
         <aside className="business-media-block">
           <div className="business-media-main tall">
             <img
-              src="/assets/images/business/aerial-analysis/main.jpg"
+              src={mainImg}
               alt="항공사진 판독 및 변화 분석 결과"
             />
           </div>
           <div className="business-media-row">
             <img
-              src="/assets/images/business/aerial-analysis/past.jpg"
+              src={thumb1}
               alt="과거 항공사진 예시"
             />
             <img
-              src="/assets/images/business/aerial-analysis/current.jpg"
+              src={thumb2}
               alt="현재 항공사진 예시"
             />
           </div>

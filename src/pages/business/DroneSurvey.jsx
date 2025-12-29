@@ -1,4 +1,8 @@
 // src/pages/business/DroneSurvey.jsx
+import mainImg from "../../assets/images/business/drone/main.jpg";
+import thumb1 from "../../assets/images/business/drone/step-1.jpg";
+import thumb2 from "../../assets/images/business/drone/step-2.jpg";
+
 export default function DroneSurvey() {
   return (
     <div className="business-section-content">
@@ -32,17 +36,17 @@ export default function DroneSurvey() {
         <aside className="business-media-block">
           <div className="business-media-main">
             <img
-              src="/assets/images/business/drone/main.jpg"
+              src={mainImg}
               alt="드론을 활용한 항공사진 촬영 및 수치지형도 제작"
             />
           </div>
           <div className="business-media-row">
             <img
-              src="/assets/images/business/drone/step-1.jpg"
+              src={thumb1}
               alt="촬영 및 비행 계획 예시"
             />
             <img
-              src="/assets/images/business/drone/step-2.jpg"
+              src={thumb2}
               alt="정사영상과 수치지형도 결과"
             />
           </div>

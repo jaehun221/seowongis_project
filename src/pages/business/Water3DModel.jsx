@@ -1,4 +1,8 @@
 // src/pages/business/Water3DModel.jsx
+import mainImg from "../../assets/images/business/water3d/main.jpg";
+import thumb1 from "../../assets/images/business/water3d/usv.jpg";
+import thumb2 from "../../assets/images/business/water3d/terrain.jpg";
+
 export default function Water3DModel() {
   return (
     <div className="business-section-content">
@@ -34,17 +38,17 @@ export default function Water3DModel() {
         <aside className="business-media-block">
           <div className="business-media-main">
             <img
-              src="/assets/images/business/water3d/main.jpg"
+              src={mainImg}
               alt="수원지 3D 지형 모델"
             />
           </div>
           <div className="business-media-row">
             <img
-              src="/assets/images/business/water3d/usv.jpg"
+              src={thumb1}
               alt="무인수심측량선 운용 예시"
             />
             <img
-              src="/assets/images/business/water3d/terrain.jpg"
+              src={thumb2}
               alt="정사영상과 수심 데이터를 결합한 예시"
             />
           </div>

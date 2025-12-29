@@ -1,4 +1,8 @@
 // src/pages/business/DroneLiDAR.jsx
+import mainImg from "../../assets/images/business/lidar/main.jpg";
+import thumb1 from "../../assets/images/business/lidar/detail-1.jpg";
+import thumb2 from "../../assets/images/business/lidar/detail-2.jpg";
+
 export default function DroneLiDAR() {
   return (
     <div className="business-section-content">
@@ -31,17 +35,17 @@ export default function DroneLiDAR() {
         <aside className="business-media-block">
           <div className="business-media-main">
             <img
-              src="/assets/images/business/lidar/main.jpg"
+              src={mainImg}
               alt="LiDAR 기반 산림 3D 모델"
             />
           </div>
           <div className="business-media-row">
             <img
-              src="/assets/images/business/lidar/detail-1.jpg"
+              src={thumb1}
               alt="LiDAR 산림 촬영 상세 예시"
             />
             <img
-              src="/assets/images/business/lidar/detail-2.jpg"
+              src={thumb2}
               alt="DSM 생성 결과 예시"
             />
           </div>
