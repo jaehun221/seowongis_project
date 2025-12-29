@@ -14,30 +14,26 @@ const certificationImageModules = import.meta.glob(
 );
 const CERTIFICATIONS = Object.entries(certificationImageModules).map(
   ([path, url], index) => {
-    const fileName = path.split("/").pop().replace(/\.(png|jpg|jpeg|gif|svg)$/, "");
-    return {
-      id: index + 1,
-      title: fileName,
-      image: url,
-    };
+    const fileName = path
+      .split("/")
+      .pop()
+      .replace(/\.(png|jpg|jpeg|gif|svg)$/, "");
+    return { id: index + 1, title: fileName, image: url };
   }
 );
 
 // 특허 이미지 자동 import
-const patentImageModules = import.meta.glob(
-  "../assets/images/home/특허/*.png",
-  { eager: true, as: "url" }
-);
-const PATENTS = Object.entries(patentImageModules).map(
-  ([path, url], index) => {
-    const fileName = path.split("/").pop().replace(/\.(png|jpg|jpeg|gif|svg)$/, "");
-    return {
-      id: index + 1,
-      title: fileName,
-      image: url,
-    };
-  }
-);
+const patentImageModules = import.meta.glob("../assets/images/home/특허/*.png", {
+  eager: true,
+  as: "url",
+});
+const PATENTS = Object.entries(patentImageModules).map(([path, url], index) => {
+  const fileName = path
+    .split("/")
+    .pop()
+    .replace(/\.(png|jpg|jpeg|gif|svg)$/, "");
+  return { id: index + 1, title: fileName, image: url };
+});
 
 const PARTNERS = [
   { id: 1, name: "공공기관 A", logo: null },
@@ -48,133 +44,82 @@ const PARTNERS = [
 
 // ===============================================
 // 커스텀 훅: Intersection Observer
-// 캐러셀이 30% 보일 때 isVisible 상태를 변경
+// - 첫 진입 트리거 용도 (한 번만 true로 만들고 끝)
 // ===============================================
-const useIntersectionObserver = (ref, threshold = 0.3) => {
-  const [isVisible, setIsVisible] = useState(false);
+const useOnceVisible = (ref, { threshold = 0.3, rootMargin = "0px" } = {}) => {
+  const [onceVisible, setOnceVisible] = useState(false);
 
   useEffect(() => {
+    if (onceVisible) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true);
-        } else {
-          setIsVisible(false);
+          setOnceVisible(true);
         }
       },
-      { threshold }
+      { threshold, rootMargin }
     );
 
     if (ref.current) observer.observe(ref.current);
 
-    return () => {
-      if (ref.current) observer.unobserve(ref.current);
-    };
-  }, [ref, threshold]);
+    return () => observer.disconnect();
+  }, [ref, threshold, rootMargin, onceVisible]);
 
-  return isVisible;
+  return onceVisible;
 };
 
 export default function Home() {
-  // 끊김 없는 무한 롤링을 위해 데이터를 4배로 복제
-  const duplicatedCerts = [
-    ...CERTIFICATIONS,
-    ...CERTIFICATIONS,
-    ...CERTIFICATIONS,
-    ...CERTIFICATIONS,
-  ];
-  const duplicatedPatents = [
-    ...PATENTS,
-    ...PATENTS,
-    ...PATENTS,
-    ...PATENTS,
-  ];
+  // 무한 롤링은 2배 복제가 -50% 기준과 가장 안정적으로 맞습니다.
+  const duplicatedCerts = [...CERTIFICATIONS, ...CERTIFICATIONS];
+  const duplicatedPatents = [...PATENTS, ...PATENTS];
 
-  // Ref 설정
   const certCarouselRef = useRef(null);
   const patentCarouselRef = useRef(null);
 
-  // 가시성 감지
-  const isCertVisible = useIntersectionObserver(certCarouselRef, 0.3);
-  const isPatentVisible = useIntersectionObserver(patentCarouselRef, 0.3);
+  // "처음 화면에 들어온 순간"만 감지
+  const certOnceVisible = useOnceVisible(certCarouselRef, { threshold: 0.3 });
+  const patentOnceVisible = useOnceVisible(patentCarouselRef, { threshold: 0.3 });
 
-  // 슬라이드 상태 (등장/퇴장 방향 제어)
-  const [certStage, setCertStage] = useState("hidden-right"); // 인증: 오른쪽에서 등장
-  const [patentStage, setPatentStage] = useState("hidden-left"); // 특허: 왼쪽에서 등장
+  // stage(입장 애니메이션) 상태: 처음엔 숨김, 첫 진입 때만 visible
+  const [certStage, setCertStage] = useState("hidden-right");
+  const [patentStage, setPatentStage] = useState("hidden-left");
 
-  // 무한 롤링 활성화 여부
+  // 무한 롤링은 첫 진입 이후 절대 끄지 않음
   const [isCertActive, setIsCertActive] = useState(false);
   const [isPatentActive, setIsPatentActive] = useState(false);
 
-  // 타이머 & 이전 가시성 상태
-  const certExitTimerRef = useRef(null);
-  const patentExitTimerRef = useRef(null);
+  // 타이머
   const certEnterTimerRef = useRef(null);
   const patentEnterTimerRef = useRef(null);
 
-  const prevCertVisibleRef = useRef(false);
-  const prevPatentVisibleRef = useRef(false);
-
-  // 인증 캐러셀: 오른쪽에서 등장 → 롤링 시작 → 사라질 때 오른쪽으로 나감
+  // 인증: 첫 진입 시 입장 애니메이션 1회 → 롤링 시작 → 이후 계속 유지
   useEffect(() => {
-    if (isCertVisible && !prevCertVisibleRef.current) {
-      // 처음 화면에 들어옴
-      if (certExitTimerRef.current) clearTimeout(certExitTimerRef.current);
+    if (!certOnceVisible) return;
 
-      setCertStage("visible"); // 슬라이드 인
+    setCertStage("visible");
+    certEnterTimerRef.current = setTimeout(() => {
+      setIsCertActive(true);
+    }, 320);
 
-      // 슬라이드 끝난 후에 무한 롤링 시작
-      certEnterTimerRef.current = setTimeout(() => {
-        setIsCertActive(true);
-      }, 320);
-    } else if (!isCertVisible && prevCertVisibleRef.current) {
-      // 화면 밖으로 나감
-      if (certEnterTimerRef.current) clearTimeout(certEnterTimerRef.current);
-
-      setIsCertActive(false); // 롤링 먼저 끄고
-      setCertStage("exiting-right"); // 오른쪽으로 슬라이드 아웃
-
-      certExitTimerRef.current = setTimeout(() => {
-        setCertStage("hidden-right");
-      }, 320);
-    }
-
-    prevCertVisibleRef.current = isCertVisible;
-  }, [isCertVisible]);
-
-  // 특허 캐러셀: 왼쪽에서 등장 → 롤링 시작 → 사라질 때 왼쪽으로 나감
-  useEffect(() => {
-    if (isPatentVisible && !prevPatentVisibleRef.current) {
-      if (patentExitTimerRef.current) clearTimeout(patentExitTimerRef.current);
-
-      setPatentStage("visible");
-
-      patentEnterTimerRef.current = setTimeout(() => {
-        setIsPatentActive(true);
-      }, 320);
-    } else if (!isPatentVisible && prevPatentVisibleRef.current) {
-      if (patentEnterTimerRef.current) clearTimeout(patentEnterTimerRef.current);
-
-      setIsPatentActive(false);
-      setPatentStage("exiting-left");
-
-      patentExitTimerRef.current = setTimeout(() => {
-        setPatentStage("hidden-left");
-      }, 320);
-    }
-
-    prevPatentVisibleRef.current = isPatentVisible;
-  }, [isPatentVisible]);
-
-  // 언마운트 시 타이머 정리
-  useEffect(() => {
     return () => {
-      if (certExitTimerRef.current) clearTimeout(certExitTimerRef.current);
-      if (patentExitTimerRef.current) clearTimeout(patentExitTimerRef.current);
       if (certEnterTimerRef.current) clearTimeout(certEnterTimerRef.current);
+    };
+  }, [certOnceVisible]);
+
+  // 특허: 첫 진입 시 입장 애니메이션 1회 → 롤링 시작 → 이후 계속 유지
+  useEffect(() => {
+    if (!patentOnceVisible) return;
+
+    setPatentStage("visible");
+    patentEnterTimerRef.current = setTimeout(() => {
+      setIsPatentActive(true);
+    }, 320);
+
+    return () => {
       if (patentEnterTimerRef.current) clearTimeout(patentEnterTimerRef.current);
     };
-  }, []);
+  }, [patentOnceVisible]);
 
   return (
     <div className="home">
@@ -193,8 +138,8 @@ export default function Home() {
             더 나은 공간정보를 만듭니다
           </h1>
           <p>
-            서원공간정보는 항공측량 · 공간데이터 · 정사영상 제작을
-            전문으로 합니다.
+            서원공간정보는 항공측량 · 공간데이터 · 정사영상 제작을 전문으로
+            합니다.
           </p>
         </div>
       </section>
@@ -205,21 +150,17 @@ export default function Home() {
           <div className="home-about-left">
             <h2 className="home-section-title">회사 소개</h2>
             <p className="home-section-subtitle">
-              서원공간정보는 공간정보의 기초가 되는 측량과 정밀 데이터 구축을
-              통해,
+              서원공간정보는 공간정보의 기초가 되는 측량과 정밀 데이터 구축을 통해,
               <br />
               공공·민간 분야의 의사결정을 지원하는 전문 공간정보 기업입니다.
             </p>
 
             <p className="home-about-body">
-              2019년 설립 이후 충청남도 서산을 기반으로 공공측량, 지하시설물
-              측량, 수치지도 제작 등
+              2019년 설립 이후 충청남도 서산을 기반으로 공공측량, 지하시설물 측량, 수치지도 제작 등
               <br />
-              다양한 공간데이터 구축 사업을 수행하며 신뢰성 높은 공간정보
-              서비스를 제공하고 있습니다.
+              다양한 공간데이터 구축 사업을 수행하며 신뢰성 높은 공간정보 서비스를 제공하고 있습니다.
               <br />
-              축적된 측량 기술력과 정사영상 제작 노하우를 바탕으로, 현장 중심의
-              정확한 데이터를 생산합니다.
+              축적된 측량 기술력과 정사영상 제작 노하우를 바탕으로, 현장 중심의 정확한 데이터를 생산합니다.
             </p>
 
             <div className="home-about-badges">
@@ -286,8 +227,8 @@ export default function Home() {
             <div>
               <h2 className="home-section-title">인증 현황</h2>
               <p className="home-section-subtitle">
-                서원공간정보는 기술력과 신뢰성을 인정받은 다양한 인증을
-                보유하고 있습니다.
+                서원공간정보는 기술력과 신뢰성을 인정받은 다양한 인증을 보유하고
+                있습니다.
               </p>
             </div>
             <a href="/certifications" className="btn-outline">
@@ -296,23 +237,17 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Full width carousel */}
         <div className="carousel carousel--right" ref={certCarouselRef}>
-          <div
-            className={`carousel-track ${isCertActive ? "is-active" : ""}`}
-            data-stage={certStage}
-          >
-            {duplicatedCerts.map((cert, index) => (
-              <div className="carousel-item" key={`cert-${index}`}>
-                <div className="cert-card">
-                  <img
-                    src={cert.image}
-                    alt={cert.title}
-                    className="cert-thumb"
-                  />
+          <div className="carousel-stage" data-stage={certStage}>
+            <div className={`carousel-track ${isCertActive ? "is-active" : ""}`}>
+              {duplicatedCerts.map((cert, index) => (
+                <div className="carousel-item" key={`cert-${index}`}>
+                  <div className="cert-card">
+                    <img src={cert.image} alt={cert.title} className="cert-thumb" />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -335,23 +270,17 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Full width carousel */}
         <div className="carousel carousel--left" ref={patentCarouselRef}>
-          <div
-            className={`carousel-track ${isPatentActive ? "is-active" : ""}`}
-            data-stage={patentStage}
-          >
-            {duplicatedPatents.map((pt, index) => (
-              <div className="carousel-item" key={`patent-${index}`}>
-                <div className="patent-card">
-                  <img
-                    src={pt.image}
-                    alt={pt.title}
-                    className="patent-thumb"
-                  />
+          <div className="carousel-stage" data-stage={patentStage}>
+            <div className={`carousel-track ${isPatentActive ? "is-active" : ""}`}>
+              {duplicatedPatents.map((pt, index) => (
+                <div className="carousel-item" key={`patent-${index}`}>
+                  <div className="patent-card">
+                    <img src={pt.image} alt={pt.title} className="patent-thumb" />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -374,11 +303,7 @@ export default function Home() {
             {PARTNERS.map((partner) => (
               <div className="partner-card" key={partner.id}>
                 <div className="partner-logo-wrap">
-                  <img
-                    src={partner.logo}
-                    alt={partner.name}
-                    className="partner-logo"
-                  />
+                  <img src={partner.logo} alt={partner.name} className="partner-logo" />
                 </div>
                 <p className="partner-name">{partner.name}</p>
               </div>

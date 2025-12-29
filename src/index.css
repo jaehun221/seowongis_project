@@ -20,17 +20,17 @@ a {
   color: inherit;
 }
 
-ul, li {
+ul,
+li {
   list-style: none;
 }
 
 .container {
-  max-width: 1440px; 
-  width: 100%; 
+  max-width: 1440px;
+  width: 100%;
   padding: 0 24px;
   margin: 0 auto;
 }
-
 
 /* ================================================
    HEADER (지오스토리 PC 레이아웃 기반)
@@ -73,7 +73,6 @@ ul, li {
   display: none;
 }
 
-
 /* ================================================
    NAVIGATION
 ================================================ */
@@ -110,7 +109,7 @@ ul, li {
   width: 0%;
   height: 2px;
   background-color: #0090ff;
-  transition: width .25s ease;
+  transition: width 0.25s ease;
 }
 
 .nav-list--depth1 > .nav-list__item > a:hover::after {
@@ -166,7 +165,6 @@ ul, li {
 .nav-list--depth2 > .nav-list__item:hover > .nav-list--depth3 {
   display: block;
 }
-
 
 /* ================================================
    MEGA MENU (전체 드롭다운)
@@ -233,7 +231,6 @@ ul, li {
   color: #0090ff;
 }
 
-
 /* ================================================
    FOOTER
 ================================================ */
@@ -280,7 +277,6 @@ ul, li {
   color: #555;
 }
 
-
 /* LOCATION PAGE */
 .location-page {
   max-width: 1200px;
@@ -295,7 +291,6 @@ ul, li {
   border-left: 5px solid #1c4da1;
   padding-left: 12px;
 }
-
 
 /* ================================================
    NEWS PAGE
@@ -333,7 +328,7 @@ ul, li {
 .news-item a {
   display: flex;
   justify-content: space-between;
-  align-items: center; 
+  align-items: center;
   width: 100%;
   box-sizing: border-box;
   padding: 18px 4px;
@@ -356,7 +351,6 @@ ul, li {
   color: #777;
   font-size: 15px;
 }
-
 
 .news-detail {
   max-width: 900px;
@@ -399,7 +393,6 @@ ul, li {
   border-radius: 10px;
 }
 
-
 /* ================================================
    HOME - HERO SECTION
 ================================================ */
@@ -430,7 +423,7 @@ ul, li {
   left: 10%;
   transform: translateY(-50%);
   color: white;
-  text-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 .home-hero-text h1 {
@@ -444,7 +437,6 @@ ul, li {
   font-size: 18px;
   opacity: 0.9;
 }
-
 
 /* ================================================
    HOME - 공통 섹션 스타일
@@ -506,7 +498,6 @@ ul, li {
   gap: 24px;
   margin-bottom: 32px;
 }
-
 
 /* ================================================
    HOME - 회사 소개
@@ -612,9 +603,9 @@ ul, li {
   line-height: 1.6;
 }
 
-
 /* ================================================
    HOME - 인증/특허 공통 캐러셀 (무한 롤링 + 스크롤 애니메이션)
+   FIX: stage(입장/퇴장)와 track(무한롤링) 레이어 분리 + pause로 끊김 방지
 ================================================ */
 
 .home-cert {
@@ -630,16 +621,37 @@ ul, li {
   width: 100%;
   overflow: hidden;
   padding: 16px 0 4px;
-  pointer-events: none; 
+  pointer-events: none;
 }
 
-.carousel-track {
-  display: flex;
-  gap: 80px; 
-  width: max-content;
+/* === FIX: 특허 트랙 기본 시작점 맞추기 === */
+.carousel--left .carousel-track {
+  transform: translateX(-50%);
+}
+
+/* active일 때만 애니메이션 (기존과 동일) */
+.carousel--left .carousel-track.is-active {
+  animation: scroll-right 180s linear infinite;
+}
+
+/* pause 유지 (기존과 동일) */
+.carousel-track.is-paused {
+  animation-play-state: paused;
+}
+
+/* stage는 등장/퇴장 전용 (transform/opacity transition) */
+.carousel-stage {
   will-change: transform, opacity;
   transition: transform 0.32s ease-out, opacity 0.32s ease-out;
-  opacity: 0; /* 기본은 안 보이게 시작 */
+  opacity: 0;
+}
+
+/* track은 무한롤링 keyframes 전용 */
+.carousel-track {
+  display: flex;
+  gap: 80px;
+  width: max-content;
+  will-change: transform;
 }
 
 /* 왼쪽으로 흐르는 애니메이션 (인증) */
@@ -672,27 +684,32 @@ ul, li {
   animation: scroll-right 180s linear infinite;
 }
 
-/* ===== 스크롤 등장/퇴장 애니메이션 ===== */
+/* exit 시 끊김 방지: animation을 제거하지 않고 일단 멈춤(현재 프레임 유지) */
+.carousel-track.is-paused {
+  animation-play-state: paused;
+}
+
+/* ===== 스크롤 등장/퇴장 애니메이션 (stage에서 처리) ===== */
 /* 인증: 오른쪽에서 등장, 오른쪽으로 퇴장 */
-.carousel--right .carousel-track[data-stage="hidden-right"],
-.carousel--right .carousel-track[data-stage="exiting-right"] {
+.carousel--right .carousel-stage[data-stage="hidden-right"],
+.carousel--right .carousel-stage[data-stage="exiting-right"] {
   opacity: 0;
   transform: translateX(120px);
 }
 
-.carousel--right .carousel-track[data-stage="visible"] {
+.carousel--right .carousel-stage[data-stage="visible"] {
   opacity: 1;
   transform: translateX(0);
 }
 
 /* 특허: 왼쪽에서 등장, 왼쪽으로 퇴장 */
-.carousel--left .carousel-track[data-stage="hidden-left"],
-.carousel--left .carousel-track[data-stage="exiting-left"] {
+.carousel--left .carousel-stage[data-stage="hidden-left"],
+.carousel--left .carousel-stage[data-stage="exiting-left"] {
   opacity: 0;
   transform: translateX(-120px);
 }
 
-.carousel--left .carousel-track[data-stage="visible"] {
+.carousel--left .carousel-stage[data-stage="visible"] {
   opacity: 1;
   transform: translateX(0);
 }
@@ -701,7 +718,6 @@ ul, li {
   flex: 0 0 220px;
   pointer-events: auto;
 }
-
 
 /* ================================================
    HOME - 인증 카드
@@ -747,7 +763,6 @@ ul, li {
   line-height: 1.5;
 }
 
-
 /* ================================================
    HOME - 특허 카드
 ================================================ */
@@ -792,7 +807,6 @@ ul, li {
   line-height: 1.5;
 }
 
-
 /* ================================================
    HOME - 협력사 로고
 ================================================ */
@@ -804,7 +818,7 @@ ul, li {
 .partners-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 32px; 
+  gap: 32px;
   margin-top: 32px;
 }
 
@@ -846,7 +860,6 @@ ul, li {
   color: #444;
   text-align: center;
 }
-
 
 /* ================================================
    HOME - 분할 섹션 (split)
@@ -898,7 +911,6 @@ ul, li {
   background: #0054a6;
 }
 
-
 /* ================================================
    HOME NEWS PREVIEW
 ================================================ */
@@ -944,7 +956,6 @@ ul, li {
   border-color: #4f7ad8;
   background: #eef2ff;
 }
-
 
 /* ================================================
    HOME - 반응형
@@ -1002,6 +1013,5 @@ ul, li {
 
   .home-about-badge {
     flex: 1 1 100%;
-    
   }
 }
