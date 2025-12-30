@@ -2,6 +2,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../index.css";
 import mainImg from "../assets/images/main/main.png";
+import douDImg from "../assets/images/home/협력사/doubleDragon.jpg"
+import guktoImg from "../assets/images/home/협력사/gukto.png"
+import hyundaiS from "../assets/images/home/협력사/hyundai_steel.jpeg"
+import hyundaiG from "../assets/images/home/협력사/hyundaigunseol.svg"
+import klpgImg from "../assets/images/home/협력사/KLPG.svg"
+import seosanLogo from "../assets/images/home/협력사/seosan_logo.png"
 
 // ===============================================
 // 데이터 정의 (실제 환경에 맞게 경로 확인 필요)
@@ -36,10 +42,12 @@ const PATENTS = Object.entries(patentImageModules).map(([path, url], index) => {
 });
 
 const PARTNERS = [
-  { id: 1, name: "공공기관 A", logo: null },
-  { id: 2, name: "지자체 B", logo: null },
-  { id: 3, name: "엔지니어링사 C", logo: null },
-  { id: 4, name: "IT·플랫폼사 D", logo: null },
+  { id: 1, name: "쌍용건설", logo: douDImg },
+  { id: 2, name: "서산시", logo: seosanLogo },
+  { id: 3, name: "한국LPG사업관리원", logo: klpgImg },
+  { id: 4, name: "현대건설", logo: hyundaiG },
+  { id: 5, name: "현대제철", logo: hyundaiS },
+  { id: 6, name: "국토지리정보원", logo: guktoImg },
 ];
 
 // ===============================================
@@ -231,7 +239,7 @@ export default function Home() {
                 있습니다.
               </p>
             </div>
-            <a href="/certifications" className="btn-outline">
+            <a href="/about/certification" className="btn-outline">
               자세히 보기
             </a>
           </div>
@@ -264,7 +272,7 @@ export default function Home() {
                 차별화된 기술 경쟁력을 확보하고 있습니다.
               </p>
             </div>
-            <a href="/patents" className="btn-outline">
+            <a href="/about/certification" className="btn-outline">
               자세히 보기
             </a>
           </div>
@@ -305,7 +313,6 @@ export default function Home() {
                 <div className="partner-logo-wrap">
                   <img src={partner.logo} alt={partner.name} className="partner-logo" />
                 </div>
-                <p className="partner-name">{partner.name}</p>
               </div>
             ))}
           </div>
