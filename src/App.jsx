@@ -1,0 +1,89 @@
+// src/App.jsx
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
+// pages
+import Home from "./pages/Home";
+
+// About 레이아웃 + 세부 페이지들
+import About from "./pages/about/About";
+import History from "./pages/about/History";
+import Performance from "./pages/about/Performance";
+import Certification from "./pages/about/Certification";
+import Location from "./pages/about/Location";
+import ManagementGuideline from "./pages/about/ManagementGuideline";
+
+// Business 레이아웃 + 각 세부 페이지
+import Business from "./pages/business/Business";
+import BusinessOverview from "./pages/business/BusinessOverview";
+import SpatialInfo from "./pages/business/SpatialInfo";
+import UndergroundSurvey from "./pages/business/UndergroundSurvey";
+import DroneSurvey from "./pages/business/DroneSurvey";
+import DroneLiDAR from "./pages/business/DroneLiDAR";
+import AerialPhotoAnalysis from "./pages/business/AerialPhotoAnalysis";
+import LandUseDB from "./pages/business/LandUseDB";
+import Water3DModel from "./pages/business/Water3DModel";
+import TechTransfer from "./pages/business/TechTransfer";
+import GroundInvestigation from "./pages/business/GroundInvestigation";
+
+import Equipment from "./pages/equipment/Equipment";
+import Recruitment from "./pages/recruit/Recruitment";
+import Announcement from "./pages/recruit/Announcement";
+import News from "./pages/news";
+
+export default function App() {
+  return (
+    <Router>
+      <Header />
+
+      <main>
+        <Routes>
+          {/* Home */}
+          <Route path="/" element={<Home />} />
+
+          {/* About group - 중첩 라우팅 */}
+          <Route path="/about" element={<About />}>
+            <Route path="history" element={<History />} />
+            <Route path="performance" element={<Performance />} />
+            <Route path="certification" element={<Certification />} />
+            <Route path="guideline" element={<ManagementGuideline />} />
+            <Route path="location" element={<Location />} />
+          </Route>
+
+          {/* Business group - 중첩 라우팅 */}
+          <Route path="/business" element={<Business />}>
+            <Route index element={<BusinessOverview />} />
+            <Route path="spatial-info" element={<SpatialInfo />} />
+            <Route path="underground-survey" element={<UndergroundSurvey />} />
+            <Route path="drone-survey" element={<DroneSurvey />} />
+            <Route path="drone-lidar" element={<DroneLiDAR />} />
+            <Route
+              path="aerial-photo-analysis"
+              element={<AerialPhotoAnalysis />}
+            />
+            <Route path="landuse-db" element={<LandUseDB />} />
+            <Route path="water-3d-model" element={<Water3DModel />} />
+            <Route path="tech-transfer" element={<TechTransfer />} />
+            <Route
+              path="ground-investigation"
+              element={<GroundInvestigation />}
+            />
+          </Route>
+
+          {/* Equipment */}
+          <Route path="/equipment" element={<Equipment />} />
+
+          {/* News group */}
+          <Route path="/news/*" element={<News />} />
+
+          {/* Recruit group */}
+          <Route path="/recruit/recruitment" element={<Recruitment />} />
+          <Route path="/recruit/announcement" element={<Announcement />} />
+        </Routes>
+      </main>
+
+      <Footer />
+    </Router>
+  );
+}

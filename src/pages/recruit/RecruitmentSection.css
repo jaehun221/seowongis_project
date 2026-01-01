@@ -1,0 +1,296 @@
+.recruitment-section {
+  padding: 64px 24px;
+  background: #f9fafb;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+.recruitment-section > * {
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+/* 헤더 */
+.rec-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media (min-width: 900px) {
+  .rec-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
+.rec-header-left {
+  max-width: 520px;
+}
+
+.rec-eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #4b5563;
+}
+
+.rec-title {
+  margin-top: 4px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.rec-subtitle {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* 헤더 오른쪽: 정렬만 */
+.rec-header-right-only-sort {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 8px;
+}
+
+@media (min-width: 700px) {
+  .rec-header-right-only-sort {
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+
+/* 정렬 */
+.rec-sort label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #4b5563;
+}
+
+.rec-sort select {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  font-size: 13px;
+}
+
+/* 상단 타임라인 (복지 / 채용과정 / 지원방법) */
+.rec-top-timeline {
+  margin-top: 32px;
+  border-top: 2px solid #22c55e;
+}
+
+.rec-timeline-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  padding: 24px 0;
+  border-bottom: 1px solid #e5e7eb;
+  column-gap: 24px;
+}
+
+@media (max-width: 640px) {
+  .rec-timeline-row {
+    grid-template-columns: 90px 1fr;
+  }
+}
+
+.rec-timeline-label {
+  font-size: 22px;
+  font-weight: 700;
+  color: #22c55e;
+}
+
+.rec-timeline-content ul {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.rec-timeline-content li {
+  font-size: 13px;
+  color: #374151;
+  line-height: 1.7;
+}
+
+.rec-timeline-content li + li {
+  margin-top: 4px;
+}
+
+/* 태그 필터 */
+.rec-tags {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.rec-tag {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  font-size: 13px;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.rec-tag:hover {
+  border-color: #22c55e;
+  color: #15803d;
+}
+
+.rec-tag--active {
+  border-color: #22c55e;
+  background: #dcfce7;
+  color: #166534;
+}
+
+/* 공고 리스트 */
+.rec-list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rec-empty {
+  padding: 32px 20px;
+  border-radius: 16px;
+  border: 1px dashed #d1d5db;
+  background: #f3f4f6;
+  text-align: center;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* 공고 카드 */
+.rec-card {
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  padding: 20px 18px 16px;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.02);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.rec-card:hover {
+  border-color: #22c55e40;
+  background: #f9fffb;
+}
+
+.rec-card-main {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .rec-card-main {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.rec-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.rec-card-meta {
+  margin-top: 4px;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+.rec-card-tags {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.rec-chip {
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  background: #f3f4f6;
+  color: #4b5563;
+}
+
+.rec-chip--type {
+  background: #111827;
+  color: #f9fafb;
+}
+
+/* 우측 정보 영역 */
+.rec-card-info-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  min-width: 140px;
+}
+
+@media (max-width: 640px) {
+  .rec-card-info-right {
+    align-items: flex-start;
+  }
+}
+
+.rec-label {
+  font-size: 11px;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.rec-card-date {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* 상세 영역 */
+.rec-card--detail {
+  padding-bottom: 16px;
+}
+
+.rec-card-detail {
+  margin-top: 14px;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 14px;
+  display: grid;
+  gap: 12px;
+}
+
+@media (min-width: 900px) {
+  .rec-card-detail {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.rec-detail-block h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.rec-detail-block ul {
+  padding-left: 16px;
+  margin: 0;
+}
+
+.rec-detail-block li {
+  font-size: 12px;
+  color: #4b5563;
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
