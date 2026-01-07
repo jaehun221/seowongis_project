@@ -2,12 +2,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../index.css";
 import mainImg from "../assets/images/main/main.png";
-import douDImg from "../assets/images/home/협력사/doubleDragon.jpg"
-import guktoImg from "../assets/images/home/협력사/gukto.png"
-import hyundaiS from "../assets/images/home/협력사/hyundai_steel.jpeg"
-import hyundaiG from "../assets/images/home/협력사/hyundaigunseol.svg"
-import klpgImg from "../assets/images/home/협력사/KLPG.svg"
-import seosanLogo from "../assets/images/home/협력사/seosan_logo.png"
+import douDImg from "../assets/images/home/partner/doubleDragon.jpg"
+import guktoImg from "../assets/images/home/partner/gukto.png"
+import hyundaiS from "../assets/images/home/partner/hyundai_steel.jpeg"
+import hyundaiG from "../assets/images/home/partner/hyundaigunseol.svg"
+import klpgImg from "../assets/images/home/partner/KLPG.svg"
+import seosanLogo from "../assets/images/home/partner/seosan_logo.png"
 
 // ===============================================
 // 데이터 정의 (실제 환경에 맞게 경로 확인 필요)
@@ -15,7 +15,7 @@ import seosanLogo from "../assets/images/home/협력사/seosan_lo
 
 // 인증 이미지 자동 import
 const certificationImageModules = import.meta.glob(
-  "../assets/images/home/인증/*.png",
+  "../assets/images/home/verify/*.png",
   { eager: true, as: "url" }
 );
 const CERTIFICATIONS = Object.entries(certificationImageModules).map(
@@ -29,7 +29,7 @@ const CERTIFICATIONS = Object.entries(certificationImageModules).map(
 );
 
 // 특허 이미지 자동 import
-const patentImageModules = import.meta.glob("../assets/images/home/특허/*.png", {
+const patentImageModules = import.meta.glob("../assets/images/home/tk/*.png", {
   eager: true,
   as: "url",
 });
