@@ -15,7 +15,11 @@ export default function Location() {
       return;
     }
 
+    // ... 상단 생략
     function initMap() {
+      // kakao 객체가 있는지 최종 확인
+      if (!window.kakao || !window.kakao.maps) return;
+
       window.kakao.maps.load(() => {
         const container = document.getElementById("map");
         if (!container) return;
@@ -31,7 +35,7 @@ export default function Location() {
 
         const info = new window.kakao.maps.InfoWindow({
           content: `
-            <div style="padding:8px 12px; font-size:14px;">
+            <div style="padding:8px 12px; font-size:14px; color: #333;">
               <b>서원공간정보</b><br />
               서산시 고운로 275-5<br />
               동문프라자 207호
@@ -44,13 +48,15 @@ export default function Location() {
 
     const script = document.createElement("script");
     script.dataset.kakao = "true";
+    // 💡 쿼리 매개변수에 &libraries=services 등을 추가할 경우 여기서 추가
     script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_KEY}&autoload=false`;
     script.async = true;
 
-    script.onload = initMap;
-    script.onerror = () => {
-      console.error("❌ Failed to load Kakao Map SDK");
+    script.onload = () => {
+        // 스크립트 로드 후 바로 실행
+        initMap();
     };
+// ... 하단 생략
 
     document.head.appendChild(script);
   }, []);
