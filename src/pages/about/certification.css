@@ -68,7 +68,150 @@
   color: #666;
 }
 
-/* 반응형 */
+/* ── Tab buttons ── */
+.cert-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.cert-tab-btn {
+  padding: 12px 28px;
+  border-radius: 50px;
+  border: 2px solid #1c4da1;
+  background: #fff;
+  color: #1c4da1;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cert-tab-btn:hover {
+  background: #e8f0fe;
+}
+
+.cert-tab-btn--active {
+  background: #1c4da1;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(28, 77, 161, 0.3);
+}
+
+.cert-tab-btn--patent {
+  border-color: #b37100;
+  color: #b37100;
+}
+
+.cert-tab-btn--patent:hover {
+  background: #fef3e0;
+}
+
+.cert-tab-btn--patent-active {
+  background: #b37100;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(179, 113, 0, 0.3);
+}
+
+/* ── Section headers ── */
+.cert-section {
+  margin-bottom: 64px;
+}
+
+.cert-section--patents {
+  margin-bottom: 0;
+}
+
+.cert-section-header {
+  margin-bottom: 28px;
+}
+
+.cert-section-badge {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.cert-section-badge--cert {
+  background: #e8f0fe;
+  color: #1c4da1;
+}
+
+.cert-section-badge--patent {
+  background: #fef3e0;
+  color: #b37100;
+}
+
+.cert-section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 6px;
+}
+
+.cert-section-subtitle {
+  font-size: 0.95rem;
+  color: #888;
+  margin: 0;
+}
+
+/* ── Patent card variants ── */
+.cert-card--patent {
+  border: 1.5px solid #f5e6c8;
+}
+
+.cert-image-wrapper--patent {
+  background: linear-gradient(135deg, #fffaf0, #fef3e0);
+}
+
+.patent-group {
+  margin-bottom: 40px;
+}
+
+.patent-group:last-child {
+  margin-bottom: 0;
+}
+
+.patent-group-header {
+  margin-bottom: 18px;
+  padding-left: 2px;
+}
+
+.patent-group-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.patent-group-star {
+  color: #b37100;
+  font-size: 1rem;
+}
+
+.patent-group-count {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #b37100;
+  background: #fef3e0;
+  padding: 2px 10px;
+  border-radius: 12px;
+  margin-left: 2px;
+}
+
+.patent-group-desc {
+  font-size: 0.88rem;
+  color: #999;
+  margin: 0;
+  padding-left: 22px;
+}
+
 @media (max-width: 768px) {
   .cert-page {
     padding-top: 60px;
@@ -76,6 +219,18 @@
 
   .cert-hero h1 {
     font-size: 2rem;
+  }
+
+  .cert-section-title {
+    font-size: 1.25rem;
+  }
+
+  .patent-group-title {
+    font-size: 1.05rem;
+  }
+
+  .patent-group-desc {
+    padding-left: 0;
   }
 }
 
