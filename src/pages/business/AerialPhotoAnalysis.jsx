@@ -32,21 +32,26 @@ export default function AerialPhotoAnalysis() {
         </article>
 
         <aside className="business-media-block">
-          <div className="business-media-main tall">
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+            {/* 상단 - 중앙 1개 */}
             <img
               src={mainImg}
               alt="항공사진 판독 및 변화 분석 결과"
+              style={{ width: '62%', aspectRatio: '4/3', objectFit: 'contain', borderRadius: '10px' }}
             />
-          </div>
-          <div className="business-media-row">
-            <img
-              src={thumb1}
-              alt="과거 항공사진 예시"
-            />
-            <img
-              src={thumb2}
-              alt="현재 항공사진 예시"
-            />
+            {/* 하단 - 2개 나란히 */}
+            <div style={{ display: 'flex', gap: '8px', width: '100%', justifyContent: 'center' }}>
+              <img
+                src={thumb1}
+                alt="과거 항공사진 예시"
+                style={{ width: '48%', aspectRatio: '4/3', objectFit: 'cover', borderRadius: '10px' }}
+              />
+              <img
+                src={thumb2}
+                alt="현재 항공사진 예시"
+                style={{ width: '48%', aspectRatio: '4/3', objectFit: 'cover', borderRadius: '10px' }}
+              />
+            </div>
           </div>
           <p className="business-media-caption">
             과거·현재 항공영상을 중첩하여 변화 지역을 직관적으로 파악

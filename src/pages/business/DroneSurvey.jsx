@@ -1,7 +1,7 @@
 // src/pages/business/DroneSurvey.jsx
-import mainImg from "../../assets/images/business/drone/main.jpg";
-import thumb1 from "../../assets/images/business/drone/step-1.jpg";
-import thumb2 from "../../assets/images/business/drone/step-2.jpg";
+import mainImg from "../../assets/images/business/drone/main.png";
+import thumb1 from "../../assets/images/business/drone/step-1.png";
+import thumb2 from "../../assets/images/business/drone/step-2.png";
 
 export default function DroneSurvey() {
   return (

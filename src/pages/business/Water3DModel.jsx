@@ -36,20 +36,23 @@ export default function Water3DModel() {
         </article>
 
         <aside className="business-media-block">
-          <div className="business-media-main">
-            <img
-              src={mainImg}
-              alt="수원지 3D 지형 모델"
-            />
-          </div>
-          <div className="business-media-row">
-            <img
-              src={thumb1}
-              alt="무인수심측량선 운용 예시"
-            />
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', height: '400px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <img
+                src={mainImg}
+                alt="수원지 3D 지형 모델"
+                style={{ width: '100%', flex: 1, objectFit: 'cover', borderRadius: '10px', minHeight: 0 }}
+              />
+              <img
+                src={thumb1}
+                alt="무인수심측량선 운용 예시"
+                style={{ width: '100%', flex: 2, objectFit: 'contain', borderRadius: '10px', minHeight: 0 }}
+              />
+            </div>
             <img
               src={thumb2}
               alt="정사영상과 수심 데이터를 결합한 예시"
+              style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: '10px', alignSelf: 'start', marginTop: '-30px' }}
             />
           </div>
           <p className="business-media-caption">

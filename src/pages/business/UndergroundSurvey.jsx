@@ -1,7 +1,7 @@
 // src/pages/business/UndergroundSurvey.jsx
-import mainImg from "../../assets/images/business/underground/main.jpg";
-import thumb1 from "../../assets/images/business/underground/map-1.jpg";
-import thumb2 from "../../assets/images/business/underground/map-2.jpg";
+import mainImg from "../../assets/images/business/underground/main.png";
+import thumb1 from "../../assets/images/business/underground/map-1.png";
+import thumb2 from "../../assets/images/business/underground/map-2.png";
 
 export default function UndergroundSurvey() {
   return (

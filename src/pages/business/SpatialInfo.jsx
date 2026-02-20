@@ -1,7 +1,7 @@
 // src/pages/business/SpatialInfo.jsx
-import mainImg from "../../assets/images/business/spatial/main.jpg";
-import thumb1 from "../../assets/images/business/spatial/thumb-1.jpg";
-import thumb2 from "../../assets/images/business/spatial/thumb-2.jpg";
+import mainImg from "../../assets/images/business/spatial/main.png";
+import thumb1 from "../../assets/images/business/spatial/thumb-1.png";
+import thumb2 from "../../assets/images/business/spatial/thumb-2.png";
 
 
 export default function SpatialInfo() {
@@ -41,20 +41,23 @@ export default function SpatialInfo() {
 
         <aside className="business-media-block">
           {/* 여기 src에 실제 이미지 경로만 채워 넣으면 됨 */}
-          <div className="business-media-main">
+          <div className="business-media-main" style={{ background: 'transparent', overflow: 'visible' }}>
             <img
               src={mainImg}
               alt="공간정보 구축 예시 이미지"
+              style={{ width: '65%', height: 'auto', display: 'block', margin: '0 auto' }}
             />
           </div>
           <div className="business-media-row">
             <img
               src={thumb1}
               alt="정사영상 제작 예시"
+              style={{ height: 'auto', objectFit: 'contain' }}
             />
             <img
               src={thumb2}
               alt="수치지형도 제작 예시"
+              style={{ height: 'auto', objectFit: 'contain' }}
             />
           </div>
           <p className="business-media-caption">
