@@ -104,7 +104,7 @@ export const EQUIPMENTS = [
   // ---------------- 항공측량 ----------------
   {
     id: 10,
-    category: "항공측량·원격탐사",
+    category: "항공측량·드론측량",
     type: "항공측량 / 항공동영상 (RMS 5cm 정확도)",
     name: "PHANTOM 4 RTK 및 MAVIC3",
     image: "mavic3.png",
@@ -118,7 +118,7 @@ export const EQUIPMENTS = [
   },
   {
     id: 11,
-    category: "항공측량·원격탐사",
+    category: "항공측량·드론측량",
     type: "항공측량 / 고정밀 매핑",
     name: "M350S",
     image: "m350s.png",
@@ -133,7 +133,7 @@ export const EQUIPMENTS = [
   },
   {
     id: 12,
-    category: "항공측량·원격탐사",
+    category: "항공측량·드론측량",
     type: "항공사진도화/항공사진판독",
     name: "수치도화기",
     image: "dohwa.png",
@@ -148,7 +148,7 @@ export const EQUIPMENTS = [
   // --------- 지하매설물, 관로탐사 ------------
   {
     id: 20,
-    category: "지하매설물·관로탐사",
+    category: "지하매설물 관로탐사·원격탐사",
     type: "관로탐사",
     name: "MPS-11S",
     image: "mps-11s.png",
@@ -162,7 +162,7 @@ export const EQUIPMENTS = [
   },
   {
     id: 21,
-    category: "지하매설물·관로탐사",
+    category: "지하매설물 관로탐사·원격탐사",
     type: "핸드GPR",
     name: "Opera XR",
     image: "opera.png",
@@ -176,7 +176,7 @@ export const EQUIPMENTS = [
   },
   {
     id: 22,
-    category: "지하매설물·관로탐사",
+    category: "지하매설물 관로탐사·원격탐사",
     type: "맨홀탐지기",
     name: "MD-3010",
     image: "md-3010.png",
@@ -266,8 +266,8 @@ export const EQUIPMENTS = [
 export const EQUIPMENT_CATEGORIES = [
   "전체",
   "지상측량·정밀수준",
-  "항공측량·원격탐사",
-  "지하매설물·관로탐사",
+  "항공측량·드론측량",
+  "지하매설물 관로탐사·원격탐사",
   "수로·해양측량",
   "출력·기타",
 ];
