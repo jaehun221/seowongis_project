@@ -8,7 +8,6 @@ import hyundaiS from "../assets/images/home/partner/hyundai_steel.jpeg"
 import hyundaiG from "../assets/images/home/partner/hyundaigunseol.svg"
 import klpgImg from "../assets/images/home/partner/KLPG.svg"
 import seosanLogo from "../assets/images/home/partner/seosan_logo.png"
-import chungImg from "../assets/images/home/partner/chung.png"
 
 // ===============================================
 // 데이터 정의 (실제 환경에 맞게 경로 확인 필요)
@@ -49,7 +48,6 @@ const PARTNERS = [
   { id: 4, name: "현대건설", logo: hyundaiG },
   { id: 5, name: "현대제철", logo: hyundaiS },
   { id: 6, name: "국토지리정보원", logo: guktoImg },
-  { id: 7, name: "충청남도", logo: chungImg },
 ];
 
 // ===============================================
@@ -148,7 +146,8 @@ export default function Home() {
             더 나은 공간정보를 만듭니다
           </h1>
           <p>
-            ㈜서원공간정보는 디지털트윈에 필요한 모든 공간정보 구축을 수행합니다.
+            서원공간정보는 항공측량 · 공간데이터 · 정사영상 제작을 전문으로
+            합니다.
           </p>
         </div>
       </section>
@@ -159,39 +158,36 @@ export default function Home() {
           <div className="home-about-left">
             <h2 className="home-section-title">회사 소개</h2>
             <p className="home-section-subtitle">
-              <strong>"하늘의 시선으로 땅을 읽고, 지반의 깊이로 안전을 세웁니다."</strong> 
+              서원공간정보는 공간정보의 기초가 되는 측량과 정밀 데이터 구축을 통해,
               <br />
-              {/* 공공·민간 분야의 의사결정을 지원하는 전문 공간정보 기업입니다. */}
+              공공·민간 분야의 의사결정을 지원하는 전문 공간정보 기업입니다.
             </p>
 
             <p className="home-about-body">
-              ㈜서원공간정보는 2019년 충남 서산에 뿌리를 내린 이후, 정밀 데이터 기반의 <strong>공간정보 구축 전문 기업</strong>으로 성장해 왔습니다. 
-              우리는 단순한 측량을 넘어, 국토의 효율적 활용과 시민의 안전을 위한 디지털 자산을 만듭니다. <br />
-              우리는 최첨단 <strong>드론(UAV) 기술</strong>을 활용한 고정밀 지형도 제작부터, 
-              보이지 않는 곳의 사고를 예방하는 <br />
-              <strong>지하시설물 측량</strong>, 
-              그리고 모든 건설 및 토목 사업의 기초가 되는 <strong>지반조사</strong>까지 아우르는 종합 솔루션을 제공합니다.
+              2019년 설립 이후 충청남도 서산을 기반으로 공공측량, 지하시설물 측량, 수치지도 제작 등
+              <br />
+              다양한 공간데이터 구축 사업을 수행하며 신뢰성 높은 공간정보 서비스를 제공하고 있습니다.
+              <br />
+              축적된 측량 기술력과 정사영상 제작 노하우를 바탕으로, 현장 중심의 정확한 데이터를 생산합니다.
             </p>
 
             <div className="home-about-badges">
               <div className="home-about-badge">
                 <span className="badge-label">주요 사업</span>
                 <ul>
-                  <li>측지측량 및 지형측량</li>
-                  <li>지하시설물측량(GIS DB구축)</li>
-                  <li>드론을 이용한 수치지형도 및 정사영상제작</li>
-                  <li>연안측량</li>
-                  <li>지반조사</li>
+                  <li>공공측량 및 지적·지형 측량</li>
+                  <li>지하시설물 측량 및 데이터베이스 구축</li>
+                  <li>정사영상(Ortho) 및 공간데이터 제작</li>
+                  <li>수치지도 및 공간정보 구축 용역</li>
                 </ul>
               </div>
               <div className="home-about-badge">
                 <span className="badge-label">핵심 가치</span>
                 <ul>
-                  <li><strong>Integrity</strong> - 정직한 데이터</li>
-                  <li><strong>Continuity</strong> - 공간의 연결</li>
-                  <li><strong>Safety</strong> - 내일의 안전</li>
-                  <li><strong>Tech-Agility</strong> - 기술적 혁신</li>
-                  <li><strong>Human-Growth</strong> - 지역 인재 육성</li>
+                  <li>정확한 측량 성과와 데이터 품질</li>
+                  <li>법·제도 기준을 충족하는 신뢰성</li>
+                  <li>공공기관·지자체와의 긴밀한 협업</li>
+                  <li>지속적인 기술 개발과 인재 육성</li>
                 </ul>
               </div>
             </div>
@@ -203,7 +199,7 @@ export default function Home() {
               <dl>
                 <div>
                   <dt>법인명</dt>
-                  <dd>주식회사 서원공간정보</dd>
+                  <dd>㈜서원공간정보</dd>
                 </div>
                 <div>
                   <dt>설립일</dt>
@@ -215,11 +211,11 @@ export default function Home() {
                 </div>
                 <div>
                   <dt>소재지</dt>
-                  <dd>충청남도 서산시 고운로 275-5, 207호(동문동,동문프라자)</dd>
+                  <dd>충청남도 서산시 일원</dd>
                 </div>
                 <div>
                   <dt>주요 업종</dt>
-                  <dd>측지측량업, 지하시설물측량업, 공간영상도화업, 수치지도 제작업, 엔지니어링사업자(지반조사)</dd>
+                  <dd>측량업 · 공공측량 · 지하시설물측량 · 수치지도 제작</dd>
                 </div>
               </dl>
               <p className="home-about-note">
