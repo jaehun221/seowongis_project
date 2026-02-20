@@ -1,258 +1,122 @@
-import React, { useState, useMemo } from "react";
+import React from "react";
 import "./RecruitmentSection.css";
 
-const TEMP_BENEFITS = [
-  "임시 복지 1: 임시 복지 내용이 들어가는 자리입니다.",
-  "임시 복지 2: 임시 복지 내용이 들어가는 자리입니다.",
-  "임시 복지 3: 임시 복지 내용이 들어가는 자리입니다.",
-  "임시 복지 4: 임시 복지 내용이 들어가는 자리입니다.",
+const PROCESS_STEPS = [
+  { num: "01", label: "서류전형", sub: "Document Screening" },
+  { num: "02", label: "실무자 면접", sub: "Working Interview" },
+  { num: "03", label: "임원 면접", sub: "Executive Interview" },
+  { num: "04", label: "최종 합격", sub: "Final Acceptance" },
 ];
 
-const TEMP_PROCESS = [
-  "임시 채용단계 1: 임시 내용이 들어가는 자리입니다.",
-  "임시 채용단계 2: 임시 내용이 들어가는 자리입니다.",
-  "임시 채용단계 3: 임시 내용이 들어가는 자리입니다.",
-  "임시 채용단계 4: 임시 내용이 들어가는 자리입니다.",
-];
-const TEMP_HOW_TO_APPLY = [
-  "지원방법 : 네비게이션 바에서 채용공고에서 지원하시면 됩니다."
-];
-
-const TEMP_JOBS = [
-  {
-    id: 1,
-    title: "임시 채용공고 1",
-    team: "임시팀 A",
-    type: "임시고용형태1",
-    location: "임시지역 1",
-    level: "임시레벨 1",
-    postedAt: "임시등록일 1",
-    tags: ["임시태그1"],
-    talent: ["임시 인재상 1-1", "임시 인재상 1-2", "임시 인재상 1-3"],
-    responsibilities: [
-      "임시 업무내용 1-1",
-      "임시 업무내용 1-2",
-      "임시 업무내용 1-3",
-    ],
-    requirements: [
-      "임시 자격요건 1-1",
-      "임시 자격요건 1-2",
-      "임시 자격요건 1-3",
-    ],
-  },
-  {
-    id: 2,
-    title: "임시 채용공고 2",
-    team: "임시팀 B",
-    type: "임시고용형태2",
-    location: "임시지역 2",
-    level: "임시레벨 2",
-    postedAt: "임시등록일 2",
-    tags: ["임시태그2"],
-    talent: ["임시 인재상 2-1", "임시 인재상 2-2", "임시 인재상 2-3"],
-    responsibilities: [
-      "임시 업무내용 2-1",
-      "임시 업무내용 2-2",
-      "임시 업무내용 2-3",
-    ],
-    requirements: [
-      "임시 자격요건 2-1",
-      "임시 자격요건 2-2",
-      "임시 자격요건 2-3",
-    ],
-  },
-  {
-    id: 3,
-    title: "임시 채용공고 3",
-    team: "임시팀 C",
-    type: "임시고용형태3",
-    location: "임시지역 3",
-    level: "임시레벨 3",
-    postedAt: "상시채용",
-    tags: ["임시태그3"],
-    talent: ["임시 인재상 3-1", "임시 인재상 3-2", "임시 인재상 3-3"],
-    responsibilities: [
-      "임시 업무내용 3-1",
-      "임시 업무내용 3-2",
-      "임시 업무내용 3-3",
-    ],
-    requirements: [
-      "임시 자격요건 3-1",
-      "임시 자격요건 3-2",
-      "임시 자격요건 3-3",
-    ],
-  },
+const WELFARE_ITEMS = [
+  { icon: "📋", title: "4대보험", desc: "국민건강보험, 국민연금보험, 고용보험, 산재보험" },
+  { icon: "💼", title: "퇴직연금", desc: "안정적인 노후 대비" },
+  { icon: "✈️", title: "휴가제도", desc: "연차, 월차, 하계, 산전후 휴가, 육아휴직" },
+  { icon: "🎉", title: "경조사", desc: "경조휴가, 경조사비 지원" },
+  { icon: "🏆", title: "포상제도", desc: "우수사원, 장기근속자 표창" },
+  { icon: "🍽️", title: "회식지원", desc: "부서별 단합 회식" },
+  { icon: "🏕️", title: "워크샵", desc: "전직원 화합과 소통 단합대회" },
+  { icon: "💰", title: "수당지원", desc: "출장 근무시 수당지원" },
+  { icon: "🚕", title: "업무지원", desc: "야근식대 및 업무 택시비 지원" },
+  { icon: "📚", title: "교육지원", desc: "업무관련 자기계발비 지원" },
 ];
 
-const FILTER_TAGS = ["전체", "임시태그1", "임시태그2", "임시태그3"];
+const NOTICE_ITEMS = [
+  "입사지원서는 반드시 당사 양식을 사용하여 작성해 주십시오.",
+  "제출된 서류는 반환하지 않으며, 기재 내용이 사실과 다를 경우 합격이 취소될 수 있습니다.",
+  "국가유공자 및 장애인은 관련 법령에 의거하여 우대합니다.",
+  "문의사항은 아래 채용문의 연락처로 연락 바랍니다.",
+];
 
 export default function RecruitmentSection() {
-  const [activeTag, setActiveTag] = useState("전체");
-  const [sortBy, setSortBy] = useState("latest");
-
-  const filteredJobs = useMemo(() => {
-    let list = [...TEMP_JOBS];
-
-    if (activeTag !== "전체") {
-      list = list.filter((job) => job.tags.includes(activeTag));
-    }
-
-    if (sortBy === "latest") {
-      list.sort((a, b) => (a.postedAt < b.postedAt ? 1 : -1));
-    } else {
-      list.sort((a, b) => (a.postedAt > b.postedAt ? 1 : -1));
-    }
-
-    return list;
-  }, [activeTag, sortBy]);
-
   return (
-    <section className="recruitment-section">
-      {/* 상단 헤더 */}
-      <header className="rec-header">
-        <div className="rec-header-left">
-          <p className="rec-eyebrow">채용정보(임시)</p>
-          <h2 className="rec-title">임시 채용 안내</h2>
-          <p className="rec-subtitle">
-            이 영역의 모든 텍스트는 임시 값입니다. 실제 복지, 채용과정, 지원방법,
-            채용공고로 교체해서 사용하세요.
+    <div className="recruit-page">
+      <section className="recruit-hero">
+        <div className="recruit-container">
+          <span className="recruit-hero__label">Recruitment</span>
+          <h1 className="recruit-hero__title">인재채용</h1>
+          <p className="recruit-hero__desc">
+            서원공간정보는 미래를 향해 끊임없이 도전하고, 긍정적인 생각을 가지고
+            자신의 일에 최선을 다하는 인재를 필요로 합니다.
           </p>
         </div>
-        <div className="rec-header-right-only-sort">
-          <div className="rec-sort">
-            <label>
-              정렬
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-              >
-                <option value="latest">임시 최신순</option>
-                <option value="oldest">임시 오래된순</option>
-              </select>
-            </label>
-          </div>
-        </div>
-      </header>
+      </section>
 
-      {/* 복지 / 채용과정 / 지원방법 - 회사연혁 스타일 */}
-      <section className="rec-top-timeline">
-        <div className="rec-timeline-row">
-          <div className="rec-timeline-label">복지</div>
-          <div className="rec-timeline-content">
-            <ul>
-              {TEMP_BENEFITS.map((item, idx) => (
-                <li key={idx}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <div className="rec-timeline-row">
-          <div className="rec-timeline-label">채용 과정</div>
-          <div className="rec-timeline-content">
-            <ul>
-              {TEMP_PROCESS.map((item, idx) => (
-                <li key={idx}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <div className="rec-timeline-row">
-          <div className="rec-timeline-label">지원 방법</div>
-          <div className="rec-timeline-content">
-            <ul>
-              {TEMP_HOW_TO_APPLY.map((item, idx) => (
-                <li key={idx}>{item}</li>
-              ))}
-            </ul>
+      <section className="recruit-process">
+        <div className="recruit-container">
+          <h2 className="recruit-process__title">채용과정</h2>
+          <div className="recruit-process__steps">
+            {PROCESS_STEPS.map((step, idx) => (
+              <React.Fragment key={step.num}>
+                {idx > 0 && <div className="recruit-step-arrow" />}
+                <div className="recruit-step">
+                  <div className="recruit-step__circle">{step.num}</div>
+                  <div className="recruit-step__text">
+                    <span className="recruit-step__label">{step.label}</span>
+                    <span className="recruit-step__sublabel">{step.sub}</span>
+                  </div>
+                </div>
+              </React.Fragment>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 태그 필터 */}
-      <div className="rec-tags">
-        {FILTER_TAGS.map((tag) => (
-          <button
-            key={tag}
-            type="button"
-            onClick={() => setActiveTag(tag)}
-            className={
-              activeTag === tag ? "rec-tag rec-tag--active" : "rec-tag"
-            }
-          >
-            {tag}
-          </button>
-        ))}
-      </div>
-
-      {/* 공고 리스트 */}
-      <div className="rec-list">
-        {filteredJobs.length === 0 && (
-          <div className="rec-empty">
-            <p>임시 메시지 1: 조건에 맞는 채용공고가 없습니다.</p>
-            <p>임시 메시지 2: 필터를 변경해 주세요.</p>
+      <section className="recruit-welfare">
+        <div className="recruit-container">
+          <h2 className="recruit-welfare__title">인사복지</h2>
+          <p className="recruit-welfare__subtitle">
+            서원공간정보는 임직원의 안정적인 근무환경과 삶의 질 향상을 위해
+            다양한 복리후생 제도를 운영하고 있습니다.
+          </p>
+          <div className="recruit-welfare__grid">
+            {WELFARE_ITEMS.map((item) => (
+              <div className="welfare-card" key={item.title}>
+                <div className="welfare-card__icon">{item.icon}</div>
+                <h3 className="welfare-card__title">{item.title}</h3>
+                <p className="welfare-card__desc">{item.desc}</p>
+              </div>
+            ))}
           </div>
-        )}
+        </div>
+      </section>
 
-        {filteredJobs.map((job) => (
-          <article key={job.id} className="rec-card rec-card--detail">
-            <div className="rec-card-main">
-              <div className="rec-card-left">
-                <h3 className="rec-card-title">{job.title}</h3>
-                <p className="rec-card-meta">
-                  {job.team} · {job.location} · {job.level}
-                </p>
-                <div className="rec-card-tags">
-                  <span className="rec-chip rec-chip--type">{job.type}</span>
-                  {job.tags.map((t) => (
-                    <span key={t} className="rec-chip">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div className="rec-card-info-right">
-                <span className="rec-label">임시 등록정보</span>
-                <p className="rec-card-date">
-                  {job.postedAt === "상시채용"
-                    ? "임시 상시채용"
-                    : `임시 등록일 · ${job.postedAt}`}
-                </p>
-              </div>
+      <section className="recruit-apply">
+        <div className="recruit-container">
+          <h2 className="recruit-apply__title">지원방법</h2>
+          <p className="recruit-apply__desc">
+            당사 입사지원서 양식을 다운받아 작성 후, 이메일로 발송해주시면 빠른
+            시일내에 검토 후 서류전형 합격자에 한하여 개별 인터뷰를 진행합니다.
+          </p>
+          <div className="recruit-apply__notice">
+            <h3 className="recruit-apply__notice-title">
+              지원서 작성 시 유의사항
+            </h3>
+            <ul className="recruit-apply__notice-list">
+              {NOTICE_ITEMS.map((item, idx) => (
+                <li key={idx}>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="recruit-apply__boxes">
+            <div className="apply-box">
+              <div className="apply-box__icon">📄</div>
+              <div className="apply-box__label">입사지원서</div>
+              <div className="apply-box__value">DOWNLOAD</div>
             </div>
-
-            <div className="rec-card-detail">
-              <div className="rec-detail-block">
-                <h4>임시 인재상</h4>
-                <ul>
-                  {job.talent.map((item, idx) => (
-                    <li key={idx}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="rec-detail-block">
-                <h4>임시 맡게 될 업무</h4>
-                <ul>
-                  {job.responsibilities.map((item, idx) => (
-                    <li key={idx}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="rec-detail-block">
-                <h4>임시 자격요건</h4>
-                <ul>
-                  {job.requirements.map((item, idx) => (
-                    <li key={idx}>{item}</li>
-                  ))}
-                </ul>
-              </div>
+            <div className="apply-box">
+              <div className="apply-box__icon">✉️</div>
+              <div className="apply-box__label">이메일</div>
+              <div className="apply-box__value">recruit@seowongis.com</div>
             </div>
-          </article>
-        ))}
-      </div>
-    </section>
+            <div className="apply-box">
+              <div className="apply-box__icon">📞</div>
+              <div className="apply-box__label">채용문의</div>
+              <div className="apply-box__value">000-0000-0000</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

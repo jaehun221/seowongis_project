@@ -1,296 +1,545 @@
-.recruitment-section {
-  padding: 64px 24px;
-  background: #f9fafb;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+/* ================================================
+   RECRUITMENT PAGE — 인재채용
+   Corporate section-based layout
+================================================ */
+
+/* ── Reset & Base ── */
+.recruit-page {
+  width: 100%;
+  font-family: "Pretendard", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  color: #1e293b;
+  line-height: 1.6;
 }
 
-.recruitment-section > * {
-  max-width: 1040px;
+.recruit-page *,
+.recruit-page *::before,
+.recruit-page *::after {
+  box-sizing: border-box;
+}
+
+.recruit-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ================================================
+   Section 1 — 인재채용 Hero Header
+================================================ */
+
+.recruit-hero {
+  padding: 88px 24px 72px;
+  text-align: center;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle geometric accent — thin top border */
+.recruit-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #7dd3fc 0%, #bae6fd 100%);
+}
+
+.recruit-hero__label {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #0284c7;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.recruit-hero__title {
+  margin: 0 0 20px;
+  font-size: 40px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+.recruit-hero__desc {
+  margin: 0 auto;
+  max-width: 680px;
+  font-size: 16px;
+  color: #475569;
+  line-height: 1.8;
+}
+
+/* ================================================
+   Section 2 — 채용과정 (Recruitment Process)
+================================================ */
+
+.recruit-process {
+  padding: 80px 24px;
+  background: #e0f2fe;
+  color: #0c4a6e;
+}
+
+.recruit-process__title {
+  text-align: center;
+  margin: 0 0 56px;
+  font-size: 30px;
+  font-weight: 700;
+  color: #0c4a6e;
+  letter-spacing: -0.01em;
+}
+
+.recruit-process__steps {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  max-width: 900px;
   margin: 0 auto;
 }
 
-/* 헤더 */
-.rec-header {
+.recruit-step {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-}
-
-@media (min-width: 900px) {
-  .rec-header {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
-}
-
-.rec-header-left {
-  max-width: 520px;
-}
-
-.rec-eyebrow {
-  font-size: 12px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #4b5563;
-}
-
-.rec-title {
-  margin-top: 4px;
-  font-size: 28px;
-  font-weight: 700;
-  color: #111827;
-}
-
-.rec-subtitle {
-  margin-top: 6px;
-  font-size: 13px;
-  color: #6b7280;
-}
-
-/* 헤더 오른쪽: 정렬만 */
-.rec-header-right-only-sort {
-  display: flex;
-  justify-content: flex-start;
-  margin-top: 8px;
-}
-
-@media (min-width: 700px) {
-  .rec-header-right-only-sort {
-    justify-content: flex-end;
-    align-items: center;
-  }
-}
-
-/* 정렬 */
-.rec-sort label {
-  display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  color: #4b5563;
+  text-align: center;
+  flex: 1;
+  position: relative;
+  min-width: 0;
 }
 
-.rec-sort select {
-  padding: 6px 10px;
-  border-radius: 8px;
-  border: 1px solid #d1d5db;
+/* Circle with step number */
+.recruit-step__circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #7dd3fc;
   background: #ffffff;
-  font-size: 13px;
-}
-
-/* 상단 타임라인 (복지 / 채용과정 / 지원방법) */
-.rec-top-timeline {
-  margin-top: 32px;
-  border-top: 2px solid #22c55e;
-}
-
-.rec-timeline-row {
-  display: grid;
-  grid-template-columns: 110px 1fr;
-  padding: 24px 0;
-  border-bottom: 1px solid #e5e7eb;
-  column-gap: 24px;
-}
-
-@media (max-width: 640px) {
-  .rec-timeline-row {
-    grid-template-columns: 90px 1fr;
-  }
-}
-
-.rec-timeline-label {
-  font-size: 22px;
-  font-weight: 700;
-  color: #22c55e;
-}
-
-.rec-timeline-content ul {
-  margin: 0;
-  padding-left: 0;
-  list-style: none;
-}
-
-.rec-timeline-content li {
-  font-size: 13px;
-  color: #374151;
-  line-height: 1.7;
-}
-
-.rec-timeline-content li + li {
-  margin-top: 4px;
-}
-
-/* 태그 필터 */
-.rec-tags {
-  margin-top: 24px;
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: 700;
+  color: #0284c7;
+  position: relative;
+  z-index: 2;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.recruit-step:hover .recruit-step__circle {
+  background: #bae6fd;
+  border-color: #38bdf8;
+}
+
+.recruit-step__label {
+  margin-top: 16px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0c4a6e;
+  letter-spacing: -0.01em;
+}
+
+.recruit-step__sublabel {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 400;
+}
+
+/* Arrow connector between steps */
+.recruit-step-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 28px;
+  flex: 0 0 48px;
+  color: #7dd3fc;
+  font-size: 20px;
+  user-select: none;
+}
+
+.recruit-step-arrow::before {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 2px;
+  background: #7dd3fc;
+  position: relative;
+}
+
+.recruit-step-arrow::after {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #7dd3fc;
+  border-right: 2px solid #7dd3fc;
+  transform: rotate(45deg);
+  margin-left: -4px;
+}
+
+/* ================================================
+   Section 3 — 인사복지 (Welfare Benefits)
+================================================ */
+
+.recruit-welfare {
+  padding: 80px 24px;
+  background: #ffffff;
+}
+
+.recruit-welfare__title {
+  text-align: center;
+  margin: 0 0 12px;
+  font-size: 30px;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+}
+
+.recruit-welfare__subtitle {
+  text-align: center;
+  margin: 0 0 48px;
+  font-size: 15px;
+  color: #64748b;
+}
+
+.recruit-welfare__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Benefit card */
+.welfare-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 32px 20px 28px;
+  text-align: center;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.welfare-card:hover {
+  border-color: #7dd3fc;
+  box-shadow: 0 8px 24px rgba(56, 189, 248, 0.12);
+  transform: translateY(-2px);
+}
+
+.welfare-card__icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: #f0f7ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  line-height: 1;
+  transition: background 0.25s ease;
+}
+
+.welfare-card:hover .welfare-card__icon {
+  background: #dbeafe;
+}
+
+.welfare-card__title {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.welfare-card__desc {
+  margin: 0;
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* ================================================
+   Section 4 — 지원방법 (How to Apply)
+================================================ */
+
+.recruit-apply {
+  padding: 80px 24px;
+  background: #f8fafc;
+}
+
+.recruit-apply__title {
+  text-align: center;
+  margin: 0 0 20px;
+  font-size: 30px;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+}
+
+.recruit-apply__desc {
+  text-align: center;
+  margin: 0 auto 40px;
+  max-width: 720px;
+  font-size: 15px;
+  color: #475569;
+  line-height: 1.8;
+}
+
+/* Notice box */
+.recruit-apply__notice {
+  max-width: 780px;
+  margin: 0 auto 48px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 28px 32px;
+}
+
+.recruit-apply__notice-title {
+  margin: 0 0 16px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
   gap: 8px;
 }
 
-.rec-tag {
-  padding: 6px 12px;
-  border-radius: 999px;
-  border: 1px solid #e5e7eb;
-  background: #ffffff;
-  font-size: 13px;
-  color: #4b5563;
-  cursor: pointer;
-  transition: all 0.15s ease;
+.recruit-apply__notice-title::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 18px;
+  background: #38bdf8;
+  border-radius: 2px;
 }
 
-.rec-tag:hover {
-  border-color: #22c55e;
-  color: #15803d;
-}
-
-.rec-tag--active {
-  border-color: #22c55e;
-  background: #dcfce7;
-  color: #166534;
-}
-
-/* 공고 리스트 */
-.rec-list {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.rec-empty {
-  padding: 32px 20px;
-  border-radius: 16px;
-  border: 1px dashed #d1d5db;
-  background: #f3f4f6;
-  text-align: center;
-  font-size: 13px;
-  color: #6b7280;
-}
-
-/* 공고 카드 */
-.rec-card {
-  border-radius: 16px;
-  border: 1px solid #e5e7eb;
-  background: #ffffff;
-  padding: 20px 18px 16px;
-  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.02);
-  transition: border-color 0.15s ease, background 0.15s ease;
-}
-
-.rec-card:hover {
-  border-color: #22c55e40;
-  background: #f9fffb;
-}
-
-.rec-card-main {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-@media (max-width: 640px) {
-  .rec-card-main {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-.rec-card-title {
-  font-size: 16px;
-  font-weight: 600;
-  color: #111827;
-}
-
-.rec-card-meta {
-  margin-top: 4px;
-  font-size: 13px;
-  color: #4b5563;
-}
-
-.rec-card-tags {
-  margin-top: 8px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.rec-chip {
-  padding: 3px 9px;
-  border-radius: 999px;
-  font-size: 11px;
-  background: #f3f4f6;
-  color: #4b5563;
-}
-
-.rec-chip--type {
-  background: #111827;
-  color: #f9fafb;
-}
-
-/* 우측 정보 영역 */
-.rec-card-info-right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 4px;
-  min-width: 140px;
-}
-
-@media (max-width: 640px) {
-  .rec-card-info-right {
-    align-items: flex-start;
-  }
-}
-
-.rec-label {
-  font-size: 11px;
-  color: #9ca3af;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.rec-card-date {
-  font-size: 12px;
-  color: #6b7280;
-}
-
-/* 상세 영역 */
-.rec-card--detail {
-  padding-bottom: 16px;
-}
-
-.rec-card-detail {
-  margin-top: 14px;
-  border-top: 1px solid #e5e7eb;
-  padding-top: 14px;
-  display: grid;
-  gap: 12px;
-}
-
-@media (min-width: 900px) {
-  .rec-card-detail {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-.rec-detail-block h4 {
-  font-size: 13px;
-  font-weight: 600;
-  color: #111827;
-  margin-bottom: 6px;
-}
-
-.rec-detail-block ul {
-  padding-left: 16px;
+.recruit-apply__notice-list {
   margin: 0;
+  padding: 0 0 0 20px;
 }
 
-.rec-detail-block li {
-  font-size: 12px;
-  color: #4b5563;
-  line-height: 1.5;
-  margin-bottom: 4px;
+.recruit-apply__notice-list li {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.8;
+  list-style: disc;
+  padding-left: 4px;
+}
+
+.recruit-apply__notice-list li + li {
+  margin-top: 4px;
+}
+
+/* Bottom info boxes */
+.recruit-apply__boxes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.apply-box {
+  background: #e0f2fe;
+  border-radius: 12px;
+  padding: 28px 24px;
+  text-align: center;
+  color: #0c4a6e;
+  border: 1px solid #bae6fd;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.apply-box:hover {
+  background: #bae6fd;
+  transform: translateY(-2px);
+}
+
+.apply-box__icon {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.apply-box__label {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.apply-box__value {
+  font-size: 15px;
+  font-weight: 600;
+  color: #0c4a6e;
+  word-break: break-all;
+}
+
+/* ================================================
+   Responsive — Tablet
+================================================ */
+
+@media (max-width: 1024px) {
+  .recruit-welfare__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ================================================
+   Responsive — Mobile
+================================================ */
+
+@media (max-width: 768px) {
+  /* Hero */
+  .recruit-hero {
+    padding: 64px 20px 56px;
+  }
+
+  .recruit-hero__title {
+    font-size: 28px;
+  }
+
+  .recruit-hero__desc {
+    font-size: 14px;
+  }
+
+  /* Process */
+  .recruit-process {
+    padding: 56px 20px;
+  }
+
+  .recruit-process__title {
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+
+  .recruit-process__steps {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .recruit-step {
+    flex-direction: row;
+    gap: 16px;
+    text-align: left;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .recruit-step__circle {
+    width: 56px;
+    height: 56px;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .recruit-step__label {
+    margin-top: 0;
+    font-size: 14px;
+  }
+
+  .recruit-step__sublabel {
+    margin-top: 2px;
+    font-size: 11px;
+  }
+
+  .recruit-step__text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Vertical arrow on mobile */
+  .recruit-step-arrow {
+    flex: 0 0 auto;
+    padding: 8px 0;
+    transform: rotate(90deg);
+    width: 48px;
+  }
+
+  /* Welfare */
+  .recruit-welfare {
+    padding: 56px 20px;
+  }
+
+  .recruit-welfare__title {
+    font-size: 24px;
+  }
+
+  .recruit-welfare__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .welfare-card {
+    padding: 24px 16px 20px;
+  }
+
+  .welfare-card__icon {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+
+  .welfare-card__title {
+    font-size: 14px;
+  }
+
+  .welfare-card__desc {
+    font-size: 12px;
+  }
+
+  /* Apply */
+  .recruit-apply {
+    padding: 56px 20px;
+  }
+
+  .recruit-apply__title {
+    font-size: 24px;
+  }
+
+  .recruit-apply__desc {
+    font-size: 14px;
+  }
+
+  .recruit-apply__notice {
+    padding: 24px 20px;
+  }
+
+  .recruit-apply__boxes {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    max-width: 400px;
+  }
+
+  .apply-box {
+    padding: 24px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .recruit-hero__title {
+    font-size: 24px;
+  }
+
+  .recruit-welfare__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .welfare-card {
+    padding: 20px 12px 16px;
+  }
 }

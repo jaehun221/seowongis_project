@@ -1,235 +1,641 @@
-/* 페이지 전체 배경 대신 섹션만 살짝 톤 */
-.recruitment-section {
-  padding: 64px 24px;
-  background: linear-gradient(135deg, #f5f7fb 0%, #ffffff 60%);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+/* ================================================
+   ANNOUNCEMENT PAGE — 채용공고
+   Corporate board-table layout
+================================================ */
+
+/* ── Reset & Base ── */
+.announce-page {
+  width: 100%;
+  font-family: "Pretendard", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  color: #1e293b;
+  line-height: 1.6;
 }
 
-/* 중앙 정렬 + 최대 폭 */
-.recruitment-section > * {
-  max-width: 960px;
-  margin-left: auto;
-  margin-right: auto;
+.announce-page *,
+.announce-page *::before,
+.announce-page *::after {
+  box-sizing: border-box;
 }
 
-/* 헤더 */
-.recruitment-header .badge {
+.announce-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ================================================
+   Section 1 — Hero Header
+   Matches sibling Recruitment page hero
+================================================ */
+
+.announce-hero {
+  padding: 88px 24px 72px;
+  text-align: center;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top gradient accent line — same as Recruitment page */
+.announce-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #7dd3fc 0%, #bae6fd 100%);
+}
+
+.announce-hero__label {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #0284c7;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.announce-hero__title {
+  margin: 0 0 20px;
+  font-size: 40px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+.announce-hero__desc {
+  margin: 0 auto;
+  max-width: 680px;
+  font-size: 16px;
+  color: #475569;
+  line-height: 1.8;
+}
+
+/* ================================================
+   Section 2 — Board Table
+================================================ */
+
+.announce-board {
+  padding: 0 24px 80px;
+  background: #ffffff;
+}
+
+/* Table wrapper for horizontal scroll on mobile */
+.announce-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.announce-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 680px;
+}
+
+/* Table header */
+.announce-table thead {
+  border-top: 2px solid #7dd3fc;
+}
+
+.announce-table thead th {
+  padding: 14px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0c4a6e;
+  background: #f0f9ff;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Column widths */
+.announce-th--no {
+  width: 72px;
+}
+
+.announce-th--title {
+  text-align: left !important;
+}
+
+.announce-th--file {
+  width: 88px;
+}
+
+.announce-th--date {
+  width: 120px;
+}
+
+.announce-th--views {
+  width: 88px;
+}
+
+/* Table body */
+.announce-table tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+  background: #ffffff;
+  transition: background 0.15s ease;
+}
+
+.announce-table tbody tr:hover {
+  background: #f0f9ff;
+}
+
+.announce-table tbody td {
+  padding: 15px 12px;
+  font-size: 14px;
+  color: #1e293b;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* NO column */
+.announce-td--no {
+  font-weight: 500;
+  color: #64748b;
+  font-size: 13px;
+}
+
+/* Title column */
+.announce-td--title {
+  text-align: left !important;
+  font-weight: 500;
+  color: #1e293b;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.announce-td--title:hover {
+  color: #0284c7;
+}
+
+/* File icon */
+.announce-td--file {
+  font-size: 16px;
+  color: #64748b;
+}
+
+/* Date column */
+.announce-td--date {
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* Views column */
+.announce-td--views {
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* Empty state */
+.announce-empty td {
+  padding: 64px 12px;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+/* ================================================
+   Section 3 — Pagination
+================================================ */
+
+.announce-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 36px;
+}
+
+.announce-page-btn {
   display: inline-flex;
   align-items: center;
-  padding: 4px 12px;
-  border-radius: 999px;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  border: 1px solid #22c55e33;
-  color: #16a34a;
-  background: #dcfce7;
-}
-
-.recruitment-header h2 {
-  margin-top: 16px;
-  font-size: 28px;
-  font-weight: 700;
-  color: #111827;
-}
-
-.recruitment-header p {
-  margin-top: 8px;
-  font-size: 14px;
-  color: #6b7280;
-}
-
-/* 필터 버튼 영역 */
-.recruitment-filter {
-  margin-top: 24px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.recruitment-filter button {
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-size: 13px;
-  border: 1px solid #d1d5db;
-  background: #ffffff;
-  color: #4b5563;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.recruitment-filter button:hover {
-  border-color: #22c55e;
-  color: #15803d;
-}
-
-/* 카드 리스트 */
-.recruitment-list {
-  margin-top: 24px;
-  display: grid;
-  gap: 16px;
-}
-
-@media (min-width: 900px) {
-  .recruitment-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-.recruitment-card {
-  position: relative;
-  padding: 20px 18px 16px;
-  border-radius: 16px;
-  border: 1px solid #e5e7eb;
-  background: radial-gradient(circle at top left, #ecfdf5, #ffffff 50%);
-
-}
-
-.recruitment-card:hover {
-  transform: translateY(-3px);
-  border-color: #22c55e66;
-}
-
-/* 카드 내부 */
-.card-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-}
-
-.card-top h3 {
-  font-size: 17px;
-  font-weight: 600;
-  color: #111827;
-}
-
-.always-open {
-  padding: 3px 8px;
-  border-radius: 999px;
-  font-size: 10px;
-  border: 1px solid #22c55e55;
-  background: #dcfce7;
-  color: #16a34a;
-}
-
-.meta {
-  margin-top: 4px;
-  font-size: 12px;
-  color: #6b7280;
-}
-
-.chips {
-  margin-top: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.chip {
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 11px;
-}
-
-.chip.type {
-  background: #111827;
-  color: #f9fafb;
-}
-
-.chip.tag {
-  background: #ecfdf5;
-  color: #15803d;
-}
-
-.stack {
-  margin-top: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.stack-item {
-  padding: 4px 8px;
-  border-radius: 8px;
-  font-size: 11px;
-  background: #f3f4f6;
-  color: #4b5563;
-}
-
-.card-bottom {
-  margin-top: 12px;
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  align-items: center;
-}
-
-.card-bottom p {
-  font-size: 12px;
-  color: #6b7280;
-}
-
-.apply-btn {
-  white-space: nowrap;
-  padding: 8px 14px;
-  border-radius: 999px;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 8px;
   border: none;
-  font-size: 12px;
+  border-radius: 6px;
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
   font-weight: 500;
-  background: #22c55e;
-  color: #022c22;
+  color: #64748b;
   cursor: pointer;
-  transition: background 0.15s ease, transform 0.1s ease;
+  transition: background 0.15s ease, color 0.15s ease;
+  user-select: none;
 }
 
-.apply-btn:hover {
-  background: #16a34a;
-  transform: translateY(-1px);
+.announce-page-btn:hover {
+  background: #f1f5f9;
+  color: #0f172a;
 }
 
-/* 하단 문구 */
-.recruitment-footer {
-  margin-top: 28px;
-  font-size: 12px;
-  color: #6b7280;
-  text-align: center;
+.announce-page-btn--active {
+  background: #e0f2fe;
+  color: #0284c7;
+  font-weight: 600;
 }
 
-/* 상세 카드 버전용 */
-.rec-card--detail {
-  padding: 20px 18px 18px;
+.announce-page-btn--active:hover {
+  background: #bae6fd;
 }
 
-.rec-card-detail {
-  margin-top: 14px;
-  border-top: 1px solid #e5e7eb;
-  padding-top: 14px;
-  display: grid;
-  gap: 12px;
+/* Arrow buttons */
+.announce-page-btn--arrow {
+  font-size: 13px;
+  color: #94a3b8;
 }
 
-@media (min-width: 900px) {
-  .rec-card-detail {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+.announce-page-btn--arrow:hover {
+  color: #475569;
+}
+
+.announce-page-btn--disabled {
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ================================================
+   Section 4 — Search Bar
+================================================ */
+
+.announce-search {
+  margin-top: 32px;
+  padding: 24px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.announce-search__row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.announce-search__select {
+  height: 40px;
+  padding: 0 32px 0 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  color: #1e293b;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M2.5 4.5L6 8l3.5-3.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  transition: border-color 0.15s ease;
+}
+
+.announce-search__select:focus {
+  border-color: #7dd3fc;
+}
+
+.announce-search__input {
+  height: 40px;
+  width: 280px;
+  max-width: 100%;
+  padding: 0 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  color: #1e293b;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.announce-search__input::placeholder {
+  color: #94a3b8;
+}
+
+.announce-search__input:focus {
+  border-color: #7dd3fc;
+}
+
+.announce-search__btn {
+  height: 40px;
+  padding: 0 20px;
+  border: 1px solid #bae6fd;
+  border-radius: 6px;
+  background: #e0f2fe;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0c4a6e;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.announce-search__btn:hover {
+  background: #bae6fd;
+  border-color: #7dd3fc;
+}
+
+/* ================================================
+   Responsive — Tablet
+================================================ */
+
+@media (max-width: 1024px) {
+  .announce-hero {
+    padding: 72px 24px 56px;
+  }
+
+  .announce-hero__title {
+    font-size: 34px;
   }
 }
 
-.rec-detail-block h4 {
+/* ================================================
+   Responsive — Mobile
+================================================ */
+
+@media (max-width: 768px) {
+  .announce-hero {
+    padding: 64px 20px 48px;
+  }
+
+  .announce-hero__title {
+    font-size: 28px;
+  }
+
+  .announce-hero__desc {
+    font-size: 14px;
+  }
+
+  .announce-board {
+    padding: 0 16px 56px;
+  }
+
+  /* Search stacks on narrow screens */
+  .announce-search__row {
+    flex-wrap: wrap;
+  }
+
+  .announce-search__input {
+    width: 100%;
+    flex: 1;
+    min-width: 160px;
+  }
+
+  .announce-search__select {
+    flex-shrink: 0;
+  }
+
+  .announce-search__btn {
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .announce-hero__title {
+    font-size: 24px;
+  }
+
+  .announce-search {
+    padding: 16px;
+  }
+
+  .announce-search__row {
+    gap: 6px;
+  }
+
+  .announce-search__input {
+    width: 100%;
+  }
+}
+
+/* ================================================
+   Section 5 — Detail View (Board-style)
+   Matches geostory recruitment_announcement-view
+================================================ */
+
+.announce-detail {
+  border-top: 2px solid #7dd3fc;
+}
+
+/* ── Header: title + meta ── */
+.announce-detail__header {
+  padding: 28px 20px 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.announce-detail__title {
+  margin: 0 0 14px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.5;
+}
+
+.announce-detail__meta {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.announce-detail__meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.announce-detail__meta-label {
+  color: #64748b;
+  font-weight: 500;
+}
+
+.announce-detail__meta-value {
+  color: #64748b;
+}
+
+.announce-detail__meta-divider {
+  display: inline-block;
+  width: 1px;
+  height: 12px;
+  background: #cbd5e1;
+  margin: 0 14px;
+  flex-shrink: 0;
+}
+
+/* ── Attachment file row ── */
+.announce-detail__file {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border-bottom: 1px solid #e2e8f0;
+  background: #f8fafc;
+}
+
+.announce-detail__file-label {
   font-size: 13px;
   font-weight: 600;
-  color: #111827;
-  margin-bottom: 6px;
+  color: #64748b;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.rec-detail-block ul {
-  padding-left: 16px;
-  margin: 0;
+.announce-detail__file-name {
+  font-size: 13px;
+  color: #0284c7;
+  cursor: pointer;
+  transition: color 0.15s ease;
 }
 
-.rec-detail-block li {
-  font-size: 12px;
-  color: #4b5563;
-  line-height: 1.5;
-  margin-bottom: 4px;
+.announce-detail__file-name:hover {
+  color: #0369a1;
+  text-decoration: underline;
+}
+
+/* ── Content body ── */
+.announce-detail__body {
+  padding: 48px 20px;
+  min-height: 240px;
+  text-align: center;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.announce-detail__body p {
+  margin: 0 0 8px;
+  font-size: 15px;
+  color: #475569;
+  line-height: 1.8;
+}
+
+.announce-detail__body p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Actions: 목록 button ── */
+.announce-detail__actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 0;
+}
+
+.announce-detail__list-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  padding: 0 24px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0c4a6e;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.announce-detail__list-btn:hover {
+  background: #f0f9ff;
+  border-color: #bae6fd;
+}
+
+/* ── Prev / Next navigation ── */
+.announce-detail__nav {
+  border-top: 1px solid #e2e8f0;
+}
+
+.announce-detail__nav-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.announce-detail__nav-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0c4a6e;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 32px;
+}
+
+.announce-detail__nav-text {
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* ── Detail View Responsive — Tablet ── */
+@media (max-width: 1024px) {
+  .announce-detail__header {
+    padding: 24px 16px 18px;
+  }
+
+  .announce-detail__title {
+    font-size: 18px;
+  }
+
+  .announce-detail__body {
+    padding: 36px 16px;
+  }
+}
+
+/* ── Detail View Responsive — Mobile ── */
+@media (max-width: 768px) {
+  .announce-detail__header {
+    padding: 20px 14px 16px;
+  }
+
+  .announce-detail__title {
+    font-size: 17px;
+  }
+
+  .announce-detail__meta-divider {
+    margin: 0 10px;
+  }
+
+  .announce-detail__file {
+    padding: 12px 14px;
+    gap: 8px;
+  }
+
+  .announce-detail__body {
+    padding: 32px 14px;
+    min-height: 180px;
+  }
+
+  .announce-detail__body p {
+    font-size: 14px;
+  }
+
+  .announce-detail__nav-row {
+    padding: 12px 14px;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .announce-detail__meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .announce-detail__meta-divider {
+    display: none;
+  }
 }
