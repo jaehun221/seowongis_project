@@ -46,7 +46,7 @@ export default function ManagementGuideline() {
           <p className="mg-crumb">기업소개 · 경영지침</p>
           <h1 className="mg-title">안전보건 경영방침</h1>
           <p className="mg-lead">
-            (주)서원공간정보는 임직원의 안전과 생명을 경영의 최우선 가치로 삼으며, 안전한 작업 환경 조성을 위해 다음과 같은 원칙을 준수합니다.
+            ㈜서원공간정보는 임직원의 안전과 생명을 경영의 최우선 가치로 삼으며, 안전한 작업 환경 조성을 위해 다음과 같은 원칙을 준수합니다.
           </p>
           {/* ✅ 칩(법규 준수/위험성 평가/지속 개선) 제거 */}
         </div>
@@ -59,7 +59,7 @@ export default function ManagementGuideline() {
           <article className="mg-section">
             <h2 className="mg-h2">[8대 안전보건 실천 원칙]</h2>
             <p className="mg-desc">
-              본 원칙은 서원공간정보의 모든 임직원이 공유하고 준수해야 할 기본 방침이며,
+              본 원칙은 ㈜서원공간정보의 모든 임직원이 공유하고 준수해야 할 기본 방침이며,
               회사는 이를 성실히 이행합니다.
             </p>
 

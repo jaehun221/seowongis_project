@@ -31,6 +31,8 @@ import Equipment from "./pages/equipment/Equipment";
 import Recruitment from "./pages/recruit/Recruitment";
 import Announcement from "./pages/recruit/Announcement";
 import News from "./pages/news";
+import Privacy from "./pages/policy/Privacy";
+import Terms from "./pages/policy/Terms";
 
 export default function App() {
   return (
@@ -80,6 +82,9 @@ export default function App() {
           {/* Recruit group */}
           <Route path="/recruit/recruitment" element={<Recruitment />} />
           <Route path="/recruit/announcement" element={<Announcement />} />
+          {/* Policy */}
+          <Route path="/policy/privacy" element={<Privacy />} />
+          <Route path="/policy/term" element={<Terms />} />
         </Routes>
       </main>
 
