@@ -239,7 +239,7 @@ export default function Home() {
             <div>
               <h2 className="home-section-title">인증 현황</h2>
               <p className="home-section-subtitle">
-                서원공간정보는 기술력과 신뢰성을 인정받은 다양한 인증을 보유하고
+                ㈜서원공간정보는 기술력과 신뢰성을 인정받은 다양한 인증을 보유하고
                 있습니다.
               </p>
             </div>

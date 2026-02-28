@@ -19,7 +19,7 @@ export default function Footer() {
           <p>
             Tel: <a href="tel:0416621106">041-662-1106</a> | Fax: 041-663-1109
           </p>
-          <p>COPYRIGHT &copy;2019 (주)서원공간정보. All Rights Reserved</p>
+          <p>COPYRIGHT &copy;2019 서원공간정보. All Rights Reserved</p>
         </div>
 
       </div>

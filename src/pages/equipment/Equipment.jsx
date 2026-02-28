@@ -291,7 +291,7 @@ export default function EquipmentPage() {
       <section className="equipment-header container">
         <h2 className="equipment-title">보유장비</h2>
         <div className="equipment-title-line" />
-        <p className="equipment-subtitle">서원공간정보가 보유한 주요 장비 목록입니다</p>
+        <p className="equipment-subtitle">㈜서원공간정보가 보유한 주요 장비 목록입니다</p>
       </section>
 
       {/* 카테고리 */}

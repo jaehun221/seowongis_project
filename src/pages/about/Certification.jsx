@@ -217,7 +217,7 @@ const Certification = () => {
         <h1 className="certification-title">주요 인증현황</h1>
         <div className="certification-title-line"></div>
         <p>
-          서원공간정보의 신뢰성과 전문성을 보여주는 각종 인증·등록·확인서 및
+          ㈜서원공간정보의 신뢰성과 전문성을 보여주는 각종 인증·등록·확인서 및
           특허권입니다.
         </p>
       </div>

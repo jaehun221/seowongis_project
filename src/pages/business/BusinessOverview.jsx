@@ -17,7 +17,7 @@ export default function BusinessOverview() {
   return (
     <div className="business-overview">
       <p className="business-paragraph">
-        서원공간정보는 공간정보 구축에서 드론 LiDAR, 지하시설물 측량, 지반조사에 이르기까지
+        ㈜서원공간정보는 공간정보 구축에서 드론 LiDAR, 지하시설물 측량, 지반조사에 이르기까지
         토탈 서비스를 제공하는 전문 기업입니다. 아래에서 관심 분야를 선택하시면
         세부 페이지에서 보다 구체적인 업무 내용과 적용 사례를 확인하실 수 있습니다.
       </p>
