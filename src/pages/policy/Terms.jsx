@@ -1,8 +1,6 @@
 import "./privacy.css";
 
-const termsText = `(주)서원공간정보 홈페이지 이용약관
-
-<strong>제1조 (목적)</strong>
+const termsText = `<strong>제1조 (목적)</strong>
 본 약관은 (주)서원공간정보(이하 “회사”)가 운영하는 홈페이지에서 제공하는 서비스의 이용과 관련하여 회사와 이용자의 권리·의무 및 책임사항을 규정함을 목적으로 합니다.
 
 <strong>제2조 (서비스의 내용)</strong>
