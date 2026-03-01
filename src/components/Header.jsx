@@ -27,7 +27,7 @@ export default function Header() {
       </div>
 
       {/* MEGA MENU */}
-      <div className={`mega-menu ${open ? "show" : ""}`}>
+      <div className={`mega-menu ${open ? "show" : ""}`} onClick={() => setOpen(false)}>
         <div className="container mega-menu-inner">
           {/* ABOUT */}
           <div className="mega-col">
